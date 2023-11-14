@@ -1,0 +1,18 @@
+.quote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+
+.quoteText {
+    max-width: 800px;
+}
+
+.pullquote {
+    text-align: justify;
+}
+
+.attribution {
+
+}

@@ -1,0 +1,22 @@
+{
+  "name": "hh_year-in-review_2023_client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@sanity/client": "^6.7.1",
+    "@studio-freight/lenis": "^1.0.27",
+    "solid-js": "^1.7.8",
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "vite": "^4.5.0",
+    "vite-plugin-glsl": "^1.1.2",
+    "vite-plugin-solid": "^2.7.0"
+  }
+}
