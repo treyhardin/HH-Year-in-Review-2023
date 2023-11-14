@@ -94,11 +94,16 @@ void main() {
     vec3 amplitude = vec3(20.0, 20.0, 100.0);
     vec3 frequency = vec3(0.02, 0.02, 0.01);
     float speed = 0.2;
-    
-    newPosition.x += sin(position.y * frequency.x + uTime * speed) * amplitude.x;
-    newPosition.y += sin(position.x * frequency.y + uTime * speed) * amplitude.y;
-    newPosition.z += sin(position.x * frequency.z + uTime * speed) * amplitude.z;
 
-    vec4 modelViewPosition = modelViewMatrix * vec4(newPosition, 1.0);
+    vec3 wavesBig = vec3(0.0, 0.0, 0.0);
+    vec3 wavesSmall = vec3(0.0, 0.0, 0.0);
+    
+    wavesBig.x += sin(position.y * frequency.x + uTime * speed) * amplitude.x;
+    wavesBig.y += sin(position.x * frequency.y + uTime * speed) * amplitude.y;
+    wavesBig.z += sin(position.x * frequency.z + uTime * speed) * amplitude.z;
+
+    newPosition += wavesBig * wavesSmall;
+
+    vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
     gl_Position = projectionMatrix * modelViewPosition; 
 }
