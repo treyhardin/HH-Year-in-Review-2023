@@ -7,12 +7,35 @@ import vertex from '../../shaders/hero_vert.glsl'
 
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
-import { textureLoader } from '../../loaders/loaders';
+import { fontLoader, textureLoader } from '../../loaders/loaders';
 
 
 export default function Hero() {
 
     const clock = new THREE.Clock()
+
+    // var textShape;
+    // fontLoader.load('fonts/Teodor-Light.json', function (font) {
+    //     var textGeometry = new TextGeometry('YourText', {
+    //         font: font,
+    //         size: 100,
+    //         height: 1,
+    //         curveSegments: 5,
+    //         bevelEnabled: false,
+    //     });
+        
+
+    //     textShape = new THREE.ShapeGeometry(textGeometry.toShapes()[0]);
+
+    //     // Create line material
+    //     var lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
+
+    //     // Create line mesh
+    //     var textOutline = new THREE.LineSegments(textShape, lineMaterial);
+    //     scrollGroup().add(textOutline);
+    // });
+
+
 
     textureLoader.load('textures/HeroText.png',
     

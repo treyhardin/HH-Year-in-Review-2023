@@ -17,7 +17,7 @@
   --color-subdued: hsl(0, 0%, 40%);
   --color-neutral: #D4D6CA;
   --color-light: hsl(61, 100%, 92%);
-  --color-reverse: hsl(60, 100%, 99%);
+  --color-reverse: #FBFCD5;
   --color-header: hsla(60, 100%, 99%, 0.5);
 
   --brand-gradient-primary: linear-gradient(180deg, var(--color-primary) 0%, var(--color-reverse) 100%);
