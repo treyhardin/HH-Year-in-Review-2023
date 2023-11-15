@@ -8,127 +8,165 @@ import vertex from '../../shaders/hero_vert.glsl'
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { fontLoader, textureLoader } from '../../loaders/loaders';
+import { For, createSignal } from 'solid-js';
+import { getHeroImages, urlFor } from '../../utils/sanity-client';
 
 // import * as NODES from "three/examples/jsm/nodes/Nodes.js";
 
 
 export default function Hero() {
 
-    const clock = new THREE.Clock()
-    // let elapsedTime = clock.getElapsedTime();
+    const [ heroImages, setHeroImages ] = createSignal([])
 
-    // var textShape;
-    // fontLoader.load('fonts/Teodor-Light.json', function (font) {
-    //     var textGeometry = new TextGeometry('YourText', {
-    //         font: font,
-    //         size: 100,
-    //         height: 1,
-    //         curveSegments: 5,
-    //         bevelEnabled: false,
-    //     });
-        
-
-    //     textShape = new THREE.ShapeGeometry(textGeometry.toShapes()[0]);
-
-    //     // Create line material
-    //     var lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000 });
-
-    //     // Create line mesh
-    //     var textOutline = new THREE.LineSegments(textShape, lineMaterial);
-    //     scrollGroup().add(textOutline);
-    // });
-
-    const customUniforms = {
-        uTime: { value: 0 },
+    const fetchImages = async () => {
+        const heroImages = await getHeroImages()
+        console.log(heroImages)
+        setHeroImages(heroImages);
     }
 
-    textureLoader.load('textures/HeroText.png',
-    
-        function ( texture ) {
+    fetchImages()
 
-            texture.flipY = true;
-            texture.wrapS = THREE.RepeatWrapping;
-            texture.wrapT = THREE.RepeatWrapping
-            texture.format = THREE.RGBAFormat
-            texture.needsUpdate = true
+    const clock = new THREE.Clock();
+    let windowWidth = window.innerWidth;
 
-            const textGeometry = new THREE.PlaneGeometry(1200, 1200, 200, 200);
-            const textMaterial = new THREE.MeshBasicMaterial({
-                color: 0xFEFFD4,
-                map: texture,
-                transparent: true,
-            })
+    const textWaveUniforms = {
+        uTime: { value: 0 },
+        uMousePosition: { value: new THREE.Vector2(0, 0)}
+    }
 
-            textMaterial.onBeforeCompile = (shader) => {
 
-                shader.uniforms.uTime = customUniforms.uTime;
 
-                // console.log(shader.vertexShader)
+    const createTextWave = (textSize, segments) => {
 
-                // Add Uniforms
-                shader.vertexShader = shader.vertexShader.replace('#include <common>',
-                `
-                    #include <common>
-                    uniform float uTime;
-                `
-                )
+        // Load Hero Text Texture
+        textureLoader.load('textures/HeroText.png',
+        
+            function ( texture ) {
 
-                // Update Position
-                shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>',
-                `
-                    #include <begin_vertex>
+                texture.flipY = true;
+                texture.colorSpace = THREE.SRGBColorSpace;
 
-                    vec3 amplitudeBig = vec3(10.0, 10.0, 50.0);
-                    vec3 frequencyBig = vec3(0.02, 0.02, 0.01);
-                    float speedBig = 0.2;
+                const textGeometry = new THREE.PlaneGeometry(textSize, textSize, segments, segments);
+                const textMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xFEFFD4,
+                    map: texture,
+                    transparent: true,
+                })
 
-                    vec3 amplitudeSmall = vec3(2.0, 2.0, 2.0);
-                    vec3 frequencySmall = vec3(2.0, 2.0, 2.0);
-                    float speedSmall = 2.0;
+                // textMaterial.wireframe = true
 
-                    vec3 wavesBig = vec3(0.0, 0.0, 0.0);
-                    vec3 wavesSmall = vec3(0.0, 0.0, 0.0);
+                textMaterial.onBeforeCompile = (shader) => {
 
-                    wavesBig.x += sin(transformed.y * frequencyBig.x + uTime * speedBig) * amplitudeBig.x;
-                    wavesBig.y += sin(transformed.x * frequencyBig.y + uTime * speedBig) * amplitudeBig.y;
-                    wavesBig.z += sin(transformed.x * frequencyBig.z + uTime * speedBig) * amplitudeBig.z;
+                    shader.uniforms.uTime = textWaveUniforms.uTime;
+                    shader.uniforms.uMousePosition = textWaveUniforms.uMousePosition;
 
-                    wavesSmall.x += cos(transformed.y * frequencySmall.x + uTime * speedSmall) * amplitudeSmall.x;
-                    wavesSmall.y += cos(transformed.x * frequencySmall.y + uTime * speedSmall) * amplitudeSmall.y;
-                    wavesSmall.z += cos(transformed.x * frequencySmall.z + uTime * speedSmall) * amplitudeSmall.z;
+                    // Add Uniforms
+                    shader.vertexShader = shader.vertexShader.replace('#include <common>',
+                    `
+                        #include <common>
+                        uniform float uTime;
+                        uniform vec2 uMousePosition;
+                    `
+                    )
 
-                    transformed += wavesBig + wavesSmall;
-                `
-                )
+                    // Update Position
+                    shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>',
+                    `
+                        #include <begin_vertex>
+
+                        vec3 amplitudeBig = vec3(10.0, 10.0, 50.0);
+                        vec3 frequencyBig = vec3(0.02, 0.02, 0.01);
+                        float speedBig = 0.2;
+
+                        vec3 amplitudeSmall = vec3(2.0, 2.0, 2.0);
+                        vec3 frequencySmall = vec3(2.0, 2.0, 2.0);
+                        float speedSmall = 2.0;
+
+                        vec3 wavesBig = vec3(0.0, 0.0, 0.0);
+                        vec3 wavesSmall = vec3(0.0, 0.0, 0.0);
+
+                        wavesBig.x += sin(transformed.y * frequencyBig.x + uTime * speedBig) * amplitudeBig.x * sin(uMousePosition.x);
+                        wavesBig.y += sin(transformed.x * frequencyBig.y + uTime * speedBig) * amplitudeBig.y * sin(uMousePosition.y);
+                        wavesBig.z += sin(transformed.x * frequencyBig.z + uTime * speedBig) * amplitudeBig.z * sin(uMousePosition.x);
+
+                        wavesSmall.x += cos(transformed.y * frequencySmall.x + uTime * speedSmall) * amplitudeSmall.x * sin(uMousePosition.x);
+                        wavesSmall.y += cos(transformed.x * frequencySmall.y + uTime * speedSmall) * amplitudeSmall.y * sin(uMousePosition.y);
+                        wavesSmall.z += cos(transformed.x * frequencySmall.z + uTime * speedSmall) * amplitudeSmall.z * sin(uMousePosition.x);
+
+                        transformed += wavesBig + wavesSmall;
+                    `
+                    )
+                }
+                // textMaterial.wireframe = true
+                const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+                scrollGroup().add( textMesh );
+
+                window.addEventListener("resize", (e) => {
+                    const newWindowWidth = e.target.innerWidth;
+                    const scaleFactor = newWindowWidth / windowWidth;
+
+                    textMesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
+                    console.log(scaleFactor);
+                    windowWidth = newWindowWidth;
+                })
+
+            },
+            function ( err ) {
+                console.error( 'An error happened.' );
             }
-            // textMaterial.wireframe = true
-            const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-            scrollGroup().add( textMesh );
+        );
+    }
+    
+    
 
-            
-        },
-        function ( err ) {
-            console.error( 'An error happened.' );
-        }
-    );
+    const createImage = () => {
+        const imageGeometry = new THREE.PlaneGeometry(100, 100, 10, 10);
+        const imageMaterial = new THREE.MeshBasicMaterial({
+            color: 0xff00ff,
+            wireframe: true,
+        })
+        const imageMesh = new THREE.Mesh(imageGeometry, imageMaterial);
+        // imageMesh.rotation.x = Math.PI / 2;
+        scrollGroup().add(imageMesh)
+    }
 
+    window.addEventListener("mousemove", (e) => {
+        const positionX = e.x / window.innerWidth
+        const positionY = e.y / window.innerHeight
+        textWaveUniforms.uMousePosition.value = new THREE.Vector2(positionX, positionY)
+        console.log(textWaveUniforms.uMousePosition)
+    })
 
     const animate = () => {
         const elapsedTime = clock.getElapsedTime();
-        customUniforms.uTime.value = elapsedTime;
+        textWaveUniforms.uTime.value = elapsedTime;
         requestAnimationFrame( animate );
     }
 
+    // createImage()
+
+    createTextWave(window.innerWidth, 200)
     animate()
 
     
-    
+    const images = [0, 1, 2, 3]
 
     
 
     return (
         <section class={styles.hero}>
-            <h1>Hero</h1>
+            {/* <h1>Hero</h1> */}
+            {/* <div class={styles.imageGrid}>
+                <For each={heroImages()}>{(heroImage, i) =>
+                    <div class={styles.heroImageItem}>
+                        <img 
+                            src={urlFor(heroImage.image.asset).width(640).url()} 
+                            alt={heroImage.name}
+                            class={styles.heroImage}
+                        />
+                    </div>
+                }</For>
+            </div> */}
         </section>
     )
 

@@ -22,7 +22,7 @@ export default function ThreeCanvas() {
     // Create Renderer
     const renderer = new THREE.WebGLRenderer({
         alpha: true,
-        antialias: true
+        antialias: true,
     });
     renderer.setPixelRatio(window.devicePixelRatio);
 
@@ -37,8 +37,8 @@ export default function ThreeCanvas() {
 
     const resizeCanvas = () => {
         if (canvas) {
-            windowFOV = Math.atan( (window.innerHeight / 2) / cameraDistance) * 2 * ( 180 / Math.PI);
-            camera.fov = windowFOV;
+            // windowFOV = Math.atan( (window.innerHeight / 2) / cameraDistance) * 2 * ( 180 / Math.PI);
+            // camera.fov = windowFOV;
             camera.aspect = window.innerWidth / window.innerHeight;
             renderer.setSize( canvas.offsetWidth, canvas.offsetHeight );
             camera.updateProjectionMatrix()

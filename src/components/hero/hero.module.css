@@ -1,8 +1,27 @@
 .hero {
+    width: 100%;
     min-height: 90dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     z-index: 1;
+    overflow: hidden;
+}
+
+.imageGrid {
+    width: 120vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: var(--space-md);
+}
+
+.heroImage {
+    max-width: 100%;
+}
+
+.heroImage {
+    /* width: 100vw;
+    border-radius: 100%; */
 }
