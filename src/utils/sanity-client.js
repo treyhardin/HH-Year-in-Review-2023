@@ -17,9 +17,19 @@ export const urlFor = (source) => {
   return builder.image(source)
 }
 
+export async function getHeroSettings() {
+  const heroSettings = await client.fetch('*[_type == "heroSettings"]')
+  return heroSettings
+}
+
 export async function getHeroImages() {
   const heroImages = await client.fetch('*[_type == "heroImage"]')
   return heroImages
+}
+
+export async function getQuoteSettings() {
+  const quoteSettings = await client.fetch('*[_type == "quoteSettings"]')
+  return quoteSettings
 }
 
 export async function getClients() {

@@ -9,21 +9,29 @@ import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { fontLoader, textureLoader } from '../../loaders/loaders';
 import { For, createSignal } from 'solid-js';
-import { getHeroImages, urlFor } from '../../utils/sanity-client';
+import { getHeroImages, getHeroSettings, urlFor } from '../../utils/sanity-client';
 
 // import * as NODES from "three/examples/jsm/nodes/Nodes.js";
 
 
 export default function Hero() {
 
+    const [ heroSettings, setHeroSettings ] = createSignal([])
     const [ heroImages, setHeroImages ] = createSignal([])
+
+    const fetchSettings = async () => {
+        const settings = await getHeroSettings()
+        setHeroSettings(settings[0]);
+        createTextWave(window.innerWidth, 200)
+    }
 
     const fetchImages = async () => {
         const heroImages = await getHeroImages()
-        console.log(heroImages)
+        createImages(heroImages)
         setHeroImages(heroImages);
     }
 
+    fetchSettings()
     fetchImages()
 
     const clock = new THREE.Clock();
@@ -38,8 +46,10 @@ export default function Hero() {
 
     const createTextWave = (textSize, segments) => {
 
+        const waveImage = urlFor(heroSettings().meshImage).url()
+
         // Load Hero Text Texture
-        textureLoader.load('textures/HeroText.png',
+        textureLoader.load(waveImage,
         
             function ( texture ) {
 
@@ -78,20 +88,20 @@ export default function Hero() {
                         vec3 frequencyBig = vec3(0.02, 0.02, 0.01);
                         float speedBig = 0.2;
 
-                        vec3 amplitudeSmall = vec3(2.0, 2.0, 2.0);
+                        vec3 amplitudeSmall = vec3(1.0, 1.0, 1.0);
                         vec3 frequencySmall = vec3(2.0, 2.0, 2.0);
                         float speedSmall = 2.0;
 
                         vec3 wavesBig = vec3(0.0, 0.0, 0.0);
                         vec3 wavesSmall = vec3(0.0, 0.0, 0.0);
 
-                        wavesBig.x += sin(transformed.y * frequencyBig.x + uTime * speedBig) * amplitudeBig.x * sin(uMousePosition.x);
-                        wavesBig.y += sin(transformed.x * frequencyBig.y + uTime * speedBig) * amplitudeBig.y * sin(uMousePosition.y);
-                        wavesBig.z += sin(transformed.x * frequencyBig.z + uTime * speedBig) * amplitudeBig.z * sin(uMousePosition.x);
+                        wavesBig.x += sin(transformed.y * frequencyBig.x + uTime * speedBig) * amplitudeBig.x * cos(uMousePosition.x);
+                        wavesBig.y += sin(transformed.x * frequencyBig.y + uTime * speedBig) * amplitudeBig.y * cos(uMousePosition.y);
+                        wavesBig.z += sin(transformed.x * frequencyBig.z + uTime * speedBig) * amplitudeBig.z * cos(uMousePosition.x);
 
-                        wavesSmall.x += cos(transformed.y * frequencySmall.x + uTime * speedSmall) * amplitudeSmall.x * sin(uMousePosition.x);
-                        wavesSmall.y += cos(transformed.x * frequencySmall.y + uTime * speedSmall) * amplitudeSmall.y * sin(uMousePosition.y);
-                        wavesSmall.z += cos(transformed.x * frequencySmall.z + uTime * speedSmall) * amplitudeSmall.z * sin(uMousePosition.x);
+                        wavesSmall.x += cos(transformed.y * frequencySmall.x + uTime * speedSmall) * amplitudeSmall.x;
+                        wavesSmall.y += cos(transformed.x * frequencySmall.y + uTime * speedSmall) * amplitudeSmall.y;
+                        wavesSmall.z += cos(transformed.x * frequencySmall.z + uTime * speedSmall) * amplitudeSmall.z;
 
                         transformed += wavesBig + wavesSmall;
                     `
@@ -118,34 +128,92 @@ export default function Hero() {
     }
     
     
+    const currentImages = []
 
-    const createImage = () => {
-        const imageGeometry = new THREE.PlaneGeometry(100, 100, 10, 10);
-        const imageMaterial = new THREE.MeshBasicMaterial({
-            color: 0xff00ff,
-            wireframe: true,
+    const createImage = (image, width, height, positionX, positionY, positionZ) => {
+
+
+        // Load Hero Text Texture
+        textureLoader.load(image,
+        
+            function ( texture ) {
+
+                texture.flipY = true;
+                texture.colorSpace = THREE.SRGBColorSpace;
+
+                const imageGeometry = new THREE.PlaneGeometry(width, height, 10, 10);
+                const imageMaterial = new THREE.MeshBasicMaterial({
+                    color: 0xFEFFD4,
+                    map: texture,
+                    // transparent: true,
+                    // wireframe: true,
+                })
+
+                const imageMesh = new THREE.Mesh(imageGeometry, imageMaterial);
+                // imageMesh.rotation.x = Math.PI / 2;
+                imageMesh.position.x = positionX
+                imageMesh.position.y = positionY
+                imageMesh.position.z = positionZ
+                currentImages.push(imageMesh)
+                scrollGroup().add(imageMesh)
+
+            },
+            function ( err ) {
+                console.error( 'An error happened.' );
+            }
+        );
+
+    }
+
+    const createImages = (images) => {
+
+        const imageWidth = window.innerWidth / 3
+        const imageHeight = window.innerHeight / 3
+
+        const spreadX = 500
+        const spreadY = window.innerHeight / 2
+        const spreadZ = -1000
+
+        let positionX = (window.innerWidth / 2) * -1
+
+        images.forEach((image) =>{
+
+            const imageUrl = urlFor(image.image).width(500).height(500).url()
+
+            const positionY = (Math.random() * spreadY * 2) - spreadY
+            const positionZ = (Math.random() * spreadZ)
+
+            console.log(positionY)
+
+            createImage( imageUrl, imageWidth, imageHeight, positionX, positionY, positionZ)
+
+            positionX += spreadX
         })
-        const imageMesh = new THREE.Mesh(imageGeometry, imageMaterial);
-        // imageMesh.rotation.x = Math.PI / 2;
-        scrollGroup().add(imageMesh)
+    }
+
+    const moveImages = () => {
+        currentImages.forEach((image) => {
+            image.position.x -= 0.6
+        })
     }
 
     window.addEventListener("mousemove", (e) => {
         const positionX = e.x / window.innerWidth
         const positionY = e.y / window.innerHeight
         textWaveUniforms.uMousePosition.value = new THREE.Vector2(positionX, positionY)
-        console.log(textWaveUniforms.uMousePosition)
+        // console.log(textWaveUniforms.uMousePosition)
     })
 
     const animate = () => {
         const elapsedTime = clock.getElapsedTime();
         textWaveUniforms.uTime.value = elapsedTime;
+        moveImages()
         requestAnimationFrame( animate );
     }
 
     // createImage()
 
-    createTextWave(window.innerWidth, 200)
+    // createTextWave(window.innerWidth, 200)
     animate()
 
     

@@ -16,7 +16,7 @@ export default function ThreeCanvas() {
     // Create Camera
     const cameraDistance = 600;
     let windowFOV = Math.atan( (window.innerHeight / 2) / cameraDistance) * 2 * ( 180 / Math.PI);
-    const camera = new THREE.PerspectiveCamera( windowFOV, window.innerWidth / window.innerHeight, 100, 1000 );
+    const camera = new THREE.PerspectiveCamera( windowFOV, window.innerWidth / window.innerHeight, 10, 15000 );
     camera.position.z = cameraDistance;
 
     // Create Renderer
