@@ -1,5 +1,21 @@
 * {
   box-sizing: border-box;
+  
+  /* ----  UPDATE THESE VALUES BASED ON DESIGNS ---- */
+  --viewport-desktop: 1440; /* The width of the desktop designs */
+  --viewport-mobile: 375; /* The width of the mobile designs */
+  
+  /* The range between mobile and desktop viewport sizes */
+  --viewport-range: calc( var(--viewport-desktop) - var(--viewport-mobile) ); 
+  
+  /* Calculate how wide the current viewport is, relative to the mobile and desktop viewport sizes */
+  --viewport-percent: calc( (100vw - (var(--viewport-mobile) * 1px)) / var(--viewport-range) ); 
+  
+  /* The range between mobile and desktop font sizes */
+  --font-size-range: calc( var(--font-size-desktop) - var(--font-size-mobile) ); 
+  
+  /*   A normalization equation that takes the range in font size and maps it between our mobile breakpoint and desktop breakpoint */
+  --fluid-font-size: calc( var(--font-size-range) * var(--viewport-percent) + (var(--font-size-mobile)) * 1px );
 }
 
 :root {
@@ -17,7 +33,7 @@
   --color-subdued: hsl(0, 0%, 40%);
   --color-neutral: #D4D6CA;
   --color-light: hsl(61, 100%, 92%);
-  --color-reverse: #FBFCD5;
+  --color-reverse: #ffffff;
   --color-header: hsla(60, 100%, 99%, 0.5);
 
   --brand-gradient-primary: linear-gradient(180deg, var(--color-primary) 0%, var(--color-reverse) 100%);
@@ -28,7 +44,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --font-primary: 'Teodor', Georgia, serif;
+  --font-primary: 'Tiposka', Georgia, serif;
   --font-secondary: 'Neue Montreal', Helvetica, sans-serif;
 
   --space-2xs: 5px;
@@ -44,12 +60,19 @@
   --radius-rounded: 100vw;
 
   --page-margin: var(--space-md);
+  --page-margin-narrow: 140px;
 
   --anim-easing: cubic-bezier(0.16, 1, 0.3, 1);
   --anim-short: 0.2s var(--anim-easing);
+
+  --icon-sm: 10px;
+  --icon-md: 14px;
+  --icon-lg: 18px;
+
+  --gradient-primary: linear-gradient(166deg, #CE2C2C -11.36%, #6B6FD5 112.86%);
 }
 
-@font-face {
+/* @font-face {
   font-family: 'Teodor';
   font-weight: normal;
   font-style: normal;
@@ -61,6 +84,13 @@
   font-weight: lighter;
   font-style: normal;
   src: url('./assets/fonts/Teodor-Thin.otf');
+} */
+
+@font-face {
+  font-family: 'Tiposka';
+  font-weight: normal;
+  font-style: normal;
+  src: url('./assets/fonts/Tiposka-Regular.otf');
 }
 
 @font-face {
@@ -78,12 +108,43 @@
 }
 
 h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0 0 0.2em;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  font-weight: lighter;
+  
+  /*   We use max here to ensure that font size never goes smaller than the size in the mobile designs */
+  font-size: max( var(--fluid-font-size), calc(var(--font-size-mobile) * 1px) );
+}
+
+p,
+a,
+ul,
+.caption {
+  font-size: max( var(--fluid-font-size), calc(var(--font-size-mobile) * 1px) );
+  /* margin: 0 0 0.4em; */
+  font-weight: normal;
+}
+
+h1,
 .h1 {
   font-family: var(--font-primary);
-  letter-spacing: -0.04em;
+  --font-size-desktop: 160;
+  --font-size-mobile: 46;
+  letter-spacing: -0.05em;
   line-height: 0.9;
   font-weight: normal;
-  font-size: 84px;
   margin: 0;
 }
 
@@ -115,8 +176,10 @@ body {
 
 .caption {
   font-family: var(--font-secondary);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .color-primary {

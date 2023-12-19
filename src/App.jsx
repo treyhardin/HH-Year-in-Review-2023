@@ -13,6 +13,7 @@ import News from './components/news/news'
 import Lenis from '@studio-freight/lenis'
 import { createSignal, onMount } from 'solid-js'
 import Quote from './components/quote/quote'
+import Navigation from './components/navigation/navigation'
 
 export const [ lenisInstance, setLenisInstance ] = createSignal(new Lenis())
 
@@ -33,17 +34,18 @@ function App() {
   return (
     <>
       <Header />
+      <Navigation />
       <main>
           <Hero />
-          <Quote />
+          {/* <Quote />
           <Clients />
           <Projects />
           <Events />
           <Team />
-          <News />
+          <News /> */}
       </main>
-      <Footer />
-      <ThreeCanvas />
+      {/* <Footer /> */}
+      {/* <ThreeCanvas /> */}
     </>
   )
 }

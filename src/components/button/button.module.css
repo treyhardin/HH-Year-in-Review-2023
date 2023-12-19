@@ -2,28 +2,47 @@ button {
     position: relative;
     display: flex;
     flex-direction: row;
-    gap: var(--space-2xs);
+    gap: var(--space-xs);
     align-items: center;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-rounded);
     border: 1px solid transparent;
-    padding: var(--space-2xs) var(--space-sm);
+    padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-sm);
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: var(--color-reverse);
     cursor: pointer;
     transition: border-color 0.25s;
     color: inherit;
   }
 
-  button:hover {
-    /* border-color: #646cff; */
-  }
+button:hover {
+  /* border-color: #646cff; */
+}
 
-  button:focus,
-  button:focus-visible {
-    outline: 2px solid -webkit-focus-ring-color;
-  }
+button:focus,
+button:focus-visible {
+  outline: 2px solid -webkit-focus-ring-color;
+}
+
+.icon {
+  /* width: */
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-rounded);
+  background: var(--gradient-primary);
+  padding: var(--space-sm);
+  color: var(--color-reverse);
+  position: relative;
+}
+
+.icon svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
 
 .buttonPrimary {
 

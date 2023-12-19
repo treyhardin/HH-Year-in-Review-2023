@@ -1,0 +1,56 @@
+.navigation {
+  position: fixed;
+  left: var(--page-margin);
+  bottom: var(--space-2xl);
+  z-index: 9;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--space-md);
+  color: var(--color-reverse);
+  mix-blend-mode: difference;
+}
+
+.progressBar {
+  /* height: 100%; */
+  position: relative;
+  /* opacity: 0.5; */
+}
+
+.progressBar::after {
+  content: "";
+  position: absolute;
+  offset: 0;
+  height: 100%;
+  width: 2px;
+  border-radius: var(--radius-rounded);
+  background-color: currentColor;
+  opacity: 0.2;
+  left: 50%;
+  translate: -50% 0%;
+}
+
+.progressHandle {
+  --icon-size: 10px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 2px;
+  background-color: currentColor;
+  rotate: 45deg;
+  position: absolute;
+  margin: var(--space-sm) 0;
+  top: 0%;
+  left: 50%;
+  translate: -50% 0%;
+}
+
+.navigationLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-xs) 0;
+}
+
+.navigationLink {
+  color: inherit;
+}

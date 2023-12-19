@@ -6,7 +6,12 @@ export default function Button({style, text, link}) {
     switch (style) {
         case 'primary':
             return (
-                <button link={link} class={`${styles.buttonPrimary} caption`}>{text}</button>
+                <button link={link} class={`${styles.buttonPrimary} caption`}>
+                    {text}
+                    <div class={styles.icon}>
+                        <Icon glyph={"arrowDiagonal"} />
+                    </div>
+                </button>
             )
         case 'secondary':
             return (

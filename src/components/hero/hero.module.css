@@ -1,27 +1,62 @@
 .hero {
     width: 100%;
-    min-height: 90dvh;
+    max-width: 100%;
+    min-height: 100dvh;
+    height: 100dvh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch;
+    align-items: flex-end;
     position: relative;
     z-index: 1;
     overflow: hidden;
+    /* gap: -100px; */
+    /* padding: var(--space-sm); */
 }
 
-.imageGrid {
-    width: 120vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
+.content {
+    z-index: 2;
+    position: relative;
+    color: var(--color-reverse);
+    mix-blend-mode: difference;
+    padding: var(--space-lg) 0 var(--space-2xl) var(--page-margin-narrow);
+    margin-right: -5vw;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-md);
+    flex: 55% 0 1;
 }
 
-.heroImage {
+.ticker {
+ border-top: 1px solid currentColor;
+ border-bottom: 1px solid currentColor;
+}
+
+.tickerText {
+
+}
+
+.heroMedia {
+    flex: 45% 1 0;
+    z-index: 1;
+    overflow: hidden;
+    padding: var(--space-lg) var(--page-margin) var(--space-lg) 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.heroAsset {
+    border-radius: var(--radius-lg);
+    /* aspect-ratio: 3 / 5; */
+    max-height: 85dvh;
+    height: auto;
     max-width: 100%;
 }
 
-.heroImage {
-    /* width: 100vw;
-    border-radius: 100%; */
+.backgroundMedia {
+    position: absolute;
+    object-fit: cover;
+    offset: 0;
+    height: 100%;
+    min-width: 100%;
+    z-index: 0;
 }
