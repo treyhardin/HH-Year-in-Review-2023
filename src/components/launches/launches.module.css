@@ -1,5 +1,5 @@
 .launches {
-  min-height: 300dvh;
+  min-height: 400dvh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -39,13 +39,13 @@
 }
 
 .logoImage {
-  --min-scale: 0px;
+  --min-scale: 500px;
   --max-scale: 6000px;
   --max-blur: 20px;
   --max-translate: 10vh;
   width: 100%;
 
-  --duration: calc(var(--seed) * 0.5 + 0.5);
+  --duration: calc(var(--seed) * 0.75 + 0.2);
   --scroll-progress-full: calc(var(--scroll-progress) / var(--duration));
   --scroll-progress-mid: calc( min( min(var(--duration), var(--scroll-progress-full) * 2), var(--duration) - var(--scroll-progress-full)));
   --depth: calc( (var(--min-scale) - var(--max-scale)) * var(--scroll-progress-full) + var(--min-scale));
