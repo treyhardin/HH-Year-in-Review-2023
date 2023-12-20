@@ -57,9 +57,9 @@ export default function Launches() {
       <section class={styles.launches} ref={imageGrid}>
         <div class={styles.launchesInner}>
           <div class={styles.sectionTitle}>
-            <p class="caption">We Launched</p>
-            <p class="h2">23</p>
-            <p class="caption">Shopify Sites</p>
+            {/* <p class="caption">We Launched</p> */}
+            <p class="h1">23</p>
+            <p class="h6">Site Launches</p>
           </div>
           <div class={styles.imageGrid}>
             <For each={data()}>{(client, i) =>

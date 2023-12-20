@@ -20,7 +20,7 @@
 
 :root {
 
-  --color-primary: #8180C6;
+  --color-primary: #0400ff;
   --color-secondary: #DD6A2A;
   --color-ink: hsl(240, 16%, 18%);
   --color-subdued: hsl(0, 0%, 40%);
@@ -122,7 +122,7 @@ h1,
   --font-size-desktop: 160;
   --font-size-mobile: 46;
   letter-spacing: -0.05em;
-  line-height: 0.9;
+  line-height: 0.85;
   font-weight: normal;
   margin: 0;
 }
@@ -141,8 +141,12 @@ h2,
 h6,
 .h6 {
   font-family: var(--font-secondary);
+  --font-size-desktop: 24;
+  --font-size-mobile: 24;
+  letter-spacing: 0.0em;
+  line-height: 0.9;
   font-weight: normal;
-  font-size: 20px;
+  margin: 0;
 }
 
 a {

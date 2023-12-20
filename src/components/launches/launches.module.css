@@ -25,6 +25,8 @@
   align-items: stretch;
   text-align: center;
   padding: var(--space-sm);
+  color: var(--color-primary);
+  gap: var(--space-xs);
   /* scale: calc( max(1, 2 * var(--scroll-progress))); */
 }
 
