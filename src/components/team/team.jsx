@@ -9,13 +9,21 @@ export default function Team() {
     return (
         <Show when={data()}>
             <section class={styles.team}>
-                <For each={data()}>{(teamMember, i) =>
-                    <div class={styles.teamMember}>
-                        <p class={`h6`}>{teamMember.name}</p>
-                        <p>{teamMember.title}</p>
-                        {/* <img src={urlFor(teamMember.image).width(400)} /> */}
-                    </div>
-                }</For>
+                <div class={styles.sectionTitle}>
+                    <p class="h1">25</p>
+                    <p class="h6">New Team Members</p>
+                </div>
+                <div class={styles.teamMembers}>
+                    <For each={data()}>{(teamMember, i) =>
+                        <Show when={teamMember.image}>
+                            <div class={styles.teamMember} key={i()}>
+                                <img class={styles.image} src={urlFor(teamMember.image).width(500).height(500)} />
+                                <p class={`${styles.name} h6`}>{teamMember.name}</p>
+                                <p class={`${styles.title}`}>{teamMember.title}</p>
+                            </div>
+                        </Show>
+                    }</For>
+                </div>
             </section>
         </Show>
     )
