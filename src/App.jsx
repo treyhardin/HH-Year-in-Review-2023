@@ -14,6 +14,7 @@ import { createSignal, onMount } from 'solid-js'
 import Quote from './components/quote/quote'
 import Navigation from './components/navigation/navigation'
 import Launches from './components/launches/launches'
+import Recognition from './components/recognition/recognition'
 
 export const lenis =  new Lenis()
 
@@ -38,6 +39,7 @@ function App() {
       <main>
           <Hero />
           <Launches />
+          <Recognition />
           <Quote />
           {/* <Clients />
           <Projects />

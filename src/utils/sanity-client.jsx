@@ -37,6 +37,11 @@ export async function getClients() {
   return clients
 }
 
+export async function getAwards() {
+  const awards = await client.fetch('*[_type == "award"]')
+  return awards
+}
+
 export async function getProjects() {
   const projects = await client.fetch('*[_type == "project"]')
   return projects

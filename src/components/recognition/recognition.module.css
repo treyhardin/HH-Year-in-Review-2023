@@ -1,0 +1,26 @@
+.recognition {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg) var(--page-margin) var(--space-lg) var(--page-margin-narrow);
+}
+
+.awardItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+  border-top: 1px solid var(--color-ink);
+  padding: var(--space-lg) 0;
+}
+
+.client {
+  flex: 20% 0 0;
+}
+
+.award {
+  flex-grow: 1;
+}
+
+.source {
+
+}
