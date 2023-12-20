@@ -1,18 +1,44 @@
 .launches {
-  min-height: 500dvh;
+  min-height: 300dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.launchesInner {
+  position: sticky;
+  top: 0;
+}
+
+.sectionTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 2;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  padding: var(--space-sm);
+  /* scale: calc( max(1, 2 * var(--scroll-progress))); */
 }
 
 .imageGrid {
-  position: sticky;
-  top: 0;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   min-height: 100dvh;
+  perspective: 3000px;
+  z-index: 1;
 }
 
 .logoImage {
-  --min-scale: 0.01;
-  --max-scale: 1.2;
+  --min-scale: 0px;
+  --max-scale: 3000px;
   --max-blur: 40px;
   --max-translate: 10vh;
   width: 100%;
@@ -20,10 +46,11 @@
   --duration: calc(var(--seed) * 0.5 + 0.5);
   --scroll-progress-full: calc(var(--scroll-progress) / var(--duration));
   --scroll-progress-mid: calc( min( min(var(--duration), var(--scroll-progress-full) * 2), var(--duration) - var(--scroll-progress-full)));
+  --depth: calc( (var(--min-scale) - var(--max-scale)) * var(--scroll-progress-full) + var(--min-scale));
 
   will-change: translate, filter, scale, opacity;
-  translate: 0 calc(var(--seed) * var(--max-translate));
+  translate: 0 0 var(--depth);
   filter: blur( calc( (var(--duration) - var(--scroll-progress-mid) * 2) * var(--max-blur)));
-  scale: calc( ( (var(--max-scale) - var(--min-scale)) * (var(--duration)) - var(--scroll-progress-full)) + var(--min-scale));
+  /* scale: calc( ( (var(--max-scale) - var(--min-scale)) * (var(--duration)) - var(--scroll-progress-full)) + var(--min-scale)); */
   opacity: var(--scroll-progress-mid);
 }

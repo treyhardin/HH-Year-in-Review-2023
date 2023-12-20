@@ -55,12 +55,17 @@ export default function Launches() {
   return (
     <Show when={data()}>
       <section class={styles.launches} ref={imageGrid}>
-        {/* <h2>32 Projects</h2> */}
-        <div class={styles.imageGrid}>
-          <For each={data()}>{(client, i) =>
-            // <p>{client.name}</p>
-            <img key={i()} src={urlFor(client.image).width(600).height(300)} class={styles.logoImage} style={`--seed: ${Math.random()}`}/>
-          }</For>
+        <div class={styles.launchesInner}>
+          <div class={styles.sectionTitle}>
+            <p class="caption">We Launched</p>
+            <p class="h2">23</p>
+            <p class="caption">Shopify Sites</p>
+          </div>
+          <div class={styles.imageGrid}>
+            <For each={data()}>{(client, i) =>
+              <img key={i()} src={urlFor(client.image).width(600).height(300)} class={styles.logoImage} style={`--seed: ${Math.random()}`}/>
+            }</For>
+          </div>
         </div>
       </section>
     </Show>
