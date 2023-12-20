@@ -13,6 +13,16 @@
     /* padding: var(--space-sm); */
 }
 
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 30vh;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255,255,255, 1) 100%);
+}
+
 .content {
     z-index: 2;
     position: relative;
@@ -27,12 +37,27 @@
 }
 
 .ticker {
- border-top: 1px solid currentColor;
- border-bottom: 1px solid currentColor;
+    border-top: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
 }
 
-.tickerText {
+.ticker p {
+    padding-right: var(--space-xs);
+    will-change: translate;
+    animation: tickerScroll 2s linear 0s infinite;
+    flex-shrink: 0;
+}
 
+@keyframes tickerScroll {
+    from {
+        translate: 0% 0%;
+    }
+    to {
+        translate: -100% 0%;
+    }
 }
 
 .heroMedia {

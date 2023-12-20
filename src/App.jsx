@@ -1,7 +1,6 @@
 import solidLogo from './assets/solid.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ThreeCanvas, { setCanvasScroll } from './components/threeCanvas/threeCanvas'
 import Hero from './components/hero/hero'
 import Clients from './components/clients/clients'
 import Projects from './components/projects/projects'
@@ -14,15 +13,16 @@ import Lenis from '@studio-freight/lenis'
 import { createSignal, onMount } from 'solid-js'
 import Quote from './components/quote/quote'
 import Navigation from './components/navigation/navigation'
+import Launches from './components/launches/launches'
 
-export const [ lenisInstance, setLenisInstance ] = createSignal(new Lenis())
+export const lenis =  new Lenis()
 
 function App() {
 
   onMount(() => {
   
     function raf(time) {
-      lenisInstance().raf(time)
+      lenis.raf(time)
       requestAnimationFrame(raf)
     }
   
@@ -37,8 +37,9 @@ function App() {
       <Navigation />
       <main>
           <Hero />
-          {/* <Quote />
-          <Clients />
+          <Launches />
+          <Quote />
+          {/* <Clients />
           <Projects />
           <Events />
           <Team />

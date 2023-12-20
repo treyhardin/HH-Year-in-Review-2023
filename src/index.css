@@ -19,13 +19,6 @@
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   --color-primary: #8180C6;
   --color-secondary: #DD6A2A;
@@ -71,20 +64,6 @@
 
   --gradient-primary: linear-gradient(166deg, #CE2C2C -11.36%, #6B6FD5 112.86%);
 }
-
-/* @font-face {
-  font-family: 'Teodor';
-  font-weight: normal;
-  font-style: normal;
-  src: url('./assets/fonts/Teodor-Light.otf');
-}
-
-@font-face {
-  font-family: 'Teodor';
-  font-weight: lighter;
-  font-style: normal;
-  src: url('./assets/fonts/Teodor-Thin.otf');
-} */
 
 @font-face {
   font-family: 'Tiposka';

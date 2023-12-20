@@ -1,0 +1,29 @@
+.launches {
+  min-height: 500dvh;
+}
+
+.imageGrid {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  min-height: 100dvh;
+}
+
+.logoImage {
+  --min-scale: 0.01;
+  --max-scale: 1.2;
+  --max-blur: 40px;
+  --max-translate: 10vh;
+  width: 100%;
+
+  --duration: calc(var(--seed) * 0.5 + 0.5);
+  --scroll-progress-full: calc(var(--scroll-progress) / var(--duration));
+  --scroll-progress-mid: calc( min( min(var(--duration), var(--scroll-progress-full) * 2), var(--duration) - var(--scroll-progress-full)));
+
+  will-change: translate, filter, scale, opacity;
+  translate: 0 calc(var(--seed) * var(--max-translate));
+  filter: blur( calc( (var(--duration) - var(--scroll-progress-mid) * 2) * var(--max-blur)));
+  scale: calc( ( (var(--max-scale) - var(--min-scale)) * (var(--duration)) - var(--scroll-progress-full)) + var(--min-scale));
+  opacity: var(--scroll-progress-mid);
+}
