@@ -32,14 +32,14 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   min-height: 100dvh;
-  perspective: 3000px;
+  perspective: 6000px;
   z-index: 1;
 }
 
 .logoImage {
   --min-scale: 0px;
-  --max-scale: 3000px;
-  --max-blur: 40px;
+  --max-scale: 6000px;
+  --max-blur: 20px;
   --max-translate: 10vh;
   width: 100%;
 
