@@ -14,6 +14,7 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
     color: inherit;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
   }
 
 button:hover {

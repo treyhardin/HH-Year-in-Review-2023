@@ -141,6 +141,17 @@ h2,
 h3,
 .h3 {
   font-family: var(--font-primary);
+  --font-size-desktop: 80;
+  --font-size-mobile: 20;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  font-weight: normal;
+  margin: 0;
+}
+
+h4,
+.h4 {
+  font-family: var(--font-primary);
   --font-size-desktop: 30;
   --font-size-mobile: 20;
   letter-spacing: -0.05em;
@@ -180,12 +191,17 @@ body {
   font-weight: normal;
 }
 
+p {
+  margin: 0 0 1em;
+}
+
 .caption {
   font-family: var(--font-secondary);
   font-size: 12px;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  margin: 0;
 }
 
 .color-primary {

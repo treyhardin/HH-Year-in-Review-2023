@@ -1,23 +1,43 @@
-import { For, createSignal } from 'solid-js'
+import { For, Show, createEffect, createResource, createSignal } from 'solid-js'
 import styles from './events.module.css'
-import { getEvents } from '../../utils/sanity-client'
+import { getEvents, getEventsSettings, urlFor } from '../../utils/sanity-client'
 
 export default function Events() {
 
-    const [ events, setEvents ] = createSignal()
+    const [ data ] = createResource(getEvents)
 
-    const fetchEvents = async () => {
-        setEvents(await getEvents())
-    }
+    let mainImage = [];
+
+    // createEffect(() => {
+    //     console.log(settingsData())
+    // })
 
     return (
-        <section>
-            <h2>Events</h2>
-            <For each={events()}>{(event, i) =>
-                <p>{event.name}</p>
-            }
-            </For>
-        </section>
+        <Show when={data()}>
+            <section class={styles.events}>
+                <For each={data()}>{(event, i) =>
+                    <div class={styles.event}>
+                        <div class={styles.sectionMain}>
+                            <div class={styles.eventInfo}>
+                                <h4>{event.name}</h4>
+                                <p>{event.location}</p>
+                            </div>
+                            <img class={styles.mainImage} src={urlFor(event.images[0]).height(1200)} ref={mainImage[i()]} />
+                        </div>
+                        <div class={styles.imageScroller}>
+                            <For each={event.images}>{(image, j) =>
+                                <img class={styles.image} src={urlFor(image).height(1200)} onClick={() => {
+                                    if (mainImage) {
+                                        mainImage[i()].src = urlFor(image).height(1200);
+                                    }
+                                }} />
+                            }</For>
+                        </div>
+                    </div>
+                }
+                </For>
+            </section>
+        </Show>
     )
 
 }

@@ -1,5 +1,6 @@
 .hero {
     width: 100%;
+    overflow: visible;
     max-width: 100%;
     min-height: 100dvh;
     height: 100dvh;
@@ -42,6 +43,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: row;
+    padding: var(--space-xs) 0;
 }
 
 .ticker p {
@@ -49,6 +51,7 @@
     will-change: translate;
     animation: tickerScroll 2s linear 0s infinite;
     flex-shrink: 0;
+    margin: 0;
 }
 
 @keyframes tickerScroll {

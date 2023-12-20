@@ -41,11 +41,9 @@ function App() {
           <Launches />
           <Recognition />
           <Quote />
-          {/* <Clients />
-          <Projects />
           <Events />
           <Team />
-          <News /> */}
+          {/* <News /> */}
       </main>
       {/* <Footer /> */}
       {/* <ThreeCanvas /> */}

@@ -18,7 +18,7 @@ export default function Recognition() {
           }
         })
       }}>
-        <p class="caption">Recognition</p>
+        <p class={`${styles.sectionTitle} h3`}>Recognition</p>
         <For each={data()}>{(award, i) =>
           <div class={styles.awardItem} ref={el => {
               el.addEventListener("mouseenter", () => {
@@ -32,7 +32,7 @@ export default function Recognition() {
           }}>
             <div class={styles.awardInfo}>
               <p class={`${styles.client} h6`}>{award.clientName}</p>
-              <p class={`${styles.award} h3`}>{award.awardName}</p>
+              <p class={`${styles.award} h4`}>{award.awardName}</p>
               <p class={`${styles.source} caption`}>{award.sourceName}</p>
             </div>
           </div>

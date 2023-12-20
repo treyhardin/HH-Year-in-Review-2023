@@ -1,0 +1,4 @@
+.team {
+  min-height: 100dvh;
+  padding: var(--space-xl) var(--page-margin) var(--space-xl) var(--page-margin-narrow);
+}

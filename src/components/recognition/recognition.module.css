@@ -2,7 +2,14 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: var(--space-lg) var(--page-margin) var(--space-lg) var(--page-margin-narrow);
+  width: 100%;
+  padding: var(--space-xl) var(--page-margin) var(--space-xl) var(--page-margin-narrow);
+}
+
+.sectionTitle {
+  margin-bottom: var(--space-lg);
+  color: var(--color-primary);
+  z-index: 1;
 }
 
 .awardItem {

@@ -27,11 +27,6 @@ export async function getHeroImages() {
   return heroImages
 }
 
-export async function getQuoteSettings() {
-  const quoteSettings = await client.fetch('*[_type == "quoteSettings"]')
-  return quoteSettings
-}
-
 export async function getClients() {
   const clients = await client.fetch('*[_type == "client"]')
   return clients
@@ -52,9 +47,19 @@ export async function getTeam() {
   return teamMembers
 }
 
+export async function getQuoteSettings() {
+  const quoteSettings = await client.fetch('*[_type == "quoteSettings"]')
+  return quoteSettings
+}
+
 export async function getEvents() {
   const events = await client.fetch('*[_type == "event"]')
   return events
+}
+
+export async function getEventsSettings() {
+  const eventSettings = await client.fetch('*[_type == "eventsSettings"]')
+  return eventSettings
 }
 
 export async function getNews() {

@@ -1,18 +1,41 @@
 .quote {
+    width: 100%;
+    overflow: visible;
+    padding: var(--space-2xl) var(--page-margin) var(--space-2xl) var(--page-margin-narrow);
+  }
+  
+  .sectionTitle {
+    min-height: 100dvh;
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100dvh;
-}
-
-.quoteText {
-    max-width: 800px;
-}
-
-.pullquote {
-    text-align: justify;
-}
-
-.attribution {
-
-}
+    z-index: 0;
+  }
+  
+  .imageGrid {
+    min-height: 300dvh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .image {
+    width: 100%;
+    border-radius: var(--radius-sm);
+  }
+  
+  .image:nth-child(3n + 1) {
+    align-self: center;
+  }
+  
+  .image:nth-child(3n + 2) {
+    align-self: end;
+  }
+  
+  .image:nth-child(3n + 3) {
+    align-self: start;
+  }
+  
