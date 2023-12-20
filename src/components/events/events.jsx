@@ -19,7 +19,7 @@ export default function Events() {
                     <div class={styles.event}>
                         <div class={styles.sectionMain}>
                             <div class={styles.eventInfo}>
-                                <h4>{event.name}</h4>
+                                <h3>{event.name}</h3>
                                 <p>{event.location}</p>
                             </div>
                             <img class={styles.mainImage} src={urlFor(event.images[0]).height(1200)} ref={mainImage[i()]} />
