@@ -18,8 +18,10 @@ export default function Team() {
                         <Show when={teamMember.image}>
                             <div class={styles.teamMember} key={i()}>
                                 <img class={styles.image} src={urlFor(teamMember.image).width(500).height(500)} />
-                                <p class={`${styles.name} h6`}>{teamMember.name}</p>
-                                <p class={`${styles.title}`}>{teamMember.title}</p>
+                                <div class={styles.info}>
+                                    <p class={`${styles.name} h6`}>{teamMember.name}</p>
+                                    <p class={`${styles.title} caption`}>{teamMember.title}</p>
+                                </div>
                             </div>
                         </Show>
                     }</For>

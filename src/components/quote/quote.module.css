@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     z-index: 0;
+    color: var(--color-primary);
   }
   
   .imageGrid {

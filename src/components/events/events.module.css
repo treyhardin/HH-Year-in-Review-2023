@@ -36,7 +36,7 @@
 
 .sectionMain:global(.subdued) .mainImage {
   /* filter: blur(20px) grayscale(100%); */
-  filter: brightness(0.5) grayscale(100%);
+  filter: brightness(0.1) grayscale(100%);
 }
 
 .eventInfo {
