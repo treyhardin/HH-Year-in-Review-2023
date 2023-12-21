@@ -10,6 +10,7 @@ import Quote from './components/quote/quote'
 import Navigation from './components/navigation/navigation'
 import Clients from './components/clients/clients'
 import Awards from './components/awards/awards'
+import Events from './components/events/events'
 
 export const lenis =  new Lenis()
 
@@ -32,6 +33,7 @@ function App() {
           <Clients />
           <Awards />
           <Quote />
+          <Events />
           <Gallery />
           <Team />
       </main>

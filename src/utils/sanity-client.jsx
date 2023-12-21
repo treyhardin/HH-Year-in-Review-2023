@@ -47,9 +47,9 @@ export async function getQuoteSettings() {
   return quoteSettings
 }
 
-export async function getEventsSettings() {
-  const eventSettings = await client.fetch('*[_type == "eventsSettings"]')
-  return eventSettings
+export async function getEvents() {
+  const events = await client.fetch('*[_type == "eventSettings"]')
+  return events
 }
 
 export async function getGallerySettings() {

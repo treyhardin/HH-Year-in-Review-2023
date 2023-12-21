@@ -1,0 +1,96 @@
+.events {
+  min-height: 300lvh;
+  /* background-color: var(--color-primary); */
+  /* padding: var(--header-height) var(--page-margin) var(--space-xl) var(--page-margin-narrow); */
+}
+
+.eventsInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: sticky;
+  top: 0;
+  min-height: 100lvh;
+  justify-content: center;
+  overflow: hidden;
+  /* top: 50lvh; */
+  /* translate: 0 -50%; */
+  margin: var(--space-xl) 0;
+  rotate: -1deg;
+}
+
+.sectionTitle {
+  color: var(--color-primary);
+  /* color: var(--color-reverse); */
+  text-align: center;
+}
+
+.eventsRow {
+  max-width: 100%;
+  gap: var(--space-md);
+  display: flex;
+  flex-direction: row;
+  will-change: translate;
+  /* transition: translate 0.05s var(--anim-easing); */
+  translate: calc(var(--scroll-progress) * -1) 0;
+}
+
+.eventsRow:nth-child(2n + 1) {
+  justify-content: flex-end;
+  translate: var(--scroll-progress) 0;
+}
+
+.event {
+  background-color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  flex: auto 0 0;
+  height: 30lvh;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3 / 4;
+}
+
+.event::before {
+  content: "";
+  background-color: var(--color-primary);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* offset: 0; */
+  z-index: 1;
+  /* opacity: 0.4; */
+  mix-blend-mode: screen;
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: grayscale(1) contrast(0.4);
+}
+
+.info {
+  /* display: none; */
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+  color: var(--color-reverse);
+}
+
+.badge {
+  padding: var(--space-2xs) var(--space-sm);
+  background-color: var(--color-reverse);
+  border-radius: var(--radius-rounded);
+  color: var(--color-primary);
+}

@@ -168,6 +168,17 @@ h4,
   margin: 0;
 }
 
+h5,
+.h5 {
+  font-family: var(--font-primary);
+  --font-size-desktop: 24;
+  --font-size-mobile: 18;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  font-weight: normal;
+  margin: 0;
+}
+
 
 h6,
 .h6 {
