@@ -66,3 +66,34 @@
   flex-direction: column;
   gap: var(--space-xs);
 }
+
+@media screen and (max-width: 768px) {
+
+  .teamMembers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teamMember:nth-child(6n + 1) {
+    justify-content: center;
+  }
+  
+  .teamMember:nth-child(6n + 2) {
+    justify-content: flex-start;
+  }
+  
+  .teamMember:nth-child(6n + 3) {
+    justify-content: center;
+  }
+  
+  .teamMember:nth-child(6n + 4) {
+    justify-content: flex-start;
+  }
+  
+  .teamMember:nth-child(6n + 5) {
+    justify-content: flex-start;
+  }
+  
+  .teamMember:nth-child(6n + 6) {
+    justify-content: center;
+  }
+}
