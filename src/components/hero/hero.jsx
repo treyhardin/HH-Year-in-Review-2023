@@ -33,14 +33,27 @@ export default function Hero() {
                     </div>
                 </div>
                 <div class={styles.heroMedia} >
-                    <video autoplay class={styles.heroAsset} loop muted  defaultmuted playsinline >
-                        <source type="video/mp4" src={ data()[0].heroVideoURL } />
-                    </video>
+                    <video 
+                        class={styles.heroAsset} 
+                        autoplay 
+                        loop 
+                        muted  
+                        defaultmuted 
+                        playsinline 
+                        src={ data()[0].heroVideoURL } 
+                        onloadedmetadata="this.muted = true" 
+                    />
                 </div>
-                <video class={styles.backgroundMedia} loop muted defaultmuted autoplay playsinline poster={urlFor(data()[0].backgroundFallback).width(1440)} >
-                    <source type="video/mp4" src={ data()[0].backgroundVideoURL } />
-                    {/* <img src={urlFor(data()[0].backgroundFallback).width(1440)} title="Your browser does not support the <video> tag" /> */}
-                </video>
+                <video 
+                    class={styles.backgroundMedia} 
+                    loop 
+                    muted 
+                    autoplay 
+                    playsinline 
+                    src={ data()[0].backgroundVideoURL } 
+                    poster={urlFor(data()[0].backgroundFallback).width(1440)} 
+                    onloadedmetadata="this.muted = true" 
+                />
             </section>
         </Show>
     )
