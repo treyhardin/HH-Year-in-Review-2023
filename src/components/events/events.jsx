@@ -8,23 +8,27 @@ export default function Events() {
 
   const [ data ] = createResource(getEvents)
 
-  let sectionContainer, scrollBounds
+  let sectionContainer, scrollBounds, animationFrameId
 
   let animatedRows = []
 
   const animateRows = () => {
 
-
     if (sectionContainer) {
+
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
 
       const scrollParentBounds = sectionContainer.getBoundingClientRect()
       const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
 
       for (let i = 0; i < animatedRows.length; i++) {
         sectionContainer.style.setProperty('--scroll-progress', `${scrollProgress * (animatedRows[i].scrollWidth)}px`)
+        // animatedRows[i].style.translate = `${scrollProgress * animatedRows[i].scrollWidth}px 0%`
       }
 
-      requestAnimationFrame(animateRows)
+      animationFrameId = requestAnimationFrame(animateRows)
 
     } 
   }
@@ -37,29 +41,10 @@ export default function Events() {
   }
 
   const initScrollListener = (target) => {
-
     animatedRows.push(target)
     animateRows()
-
-    // if (sectionContainer) {
-    //   requestAnimationFrame(setScroll)
-    // }
-
-    // if (sectionContainer) {
-          // Can improve performance by moving bounding box & scrollWidth calc outside of scroll event
-          // throttle(setScroll(target, sectionContainer), 500)
-          // setScroll(target, sectionContainer)
-          // console.log(target)
-      // }
-
-    // lenis.on('scroll', () => {
-    //   if (sectionContainer) {
-    //     // Can improve performance by moving bounding box & scrollWidth calc outside of scroll event
-    //     throttle(setScroll(target, sectionContainer), 500)
-    //   }
-    // })
-
   }
+
 
   return (
     <Show when={data()}>
@@ -80,7 +65,7 @@ export default function Events() {
               <For each={data()[0].events}>{(event, i) =>
                 <Show when={i() < data()[0].events.length / 2}>
                   <div class={styles.event}>
-                    <img class={styles.image} src={urlFor(event.image).width(600).height(800)} width="300" height="400"  />
+                    <img class={styles.image} src={urlFor(event.image).width(600).height(800).saturation(-100)} width="300" height="400"  />
                     <div class={styles.info}>
                       <p class="h5">{event.name}</p>
                       <div class={styles.badge}>
@@ -99,7 +84,7 @@ export default function Events() {
             <For each={data()[0].events}>{(event, i) =>
               <Show when={i() >= data()[0].events.length / 2}>
                   <div class={styles.event}>
-                    <img class={styles.image} src={urlFor(event.image).width(600).height(800)} width="300" height="400" />
+                    <img class={styles.image} src={urlFor(event.image).width(600).height(800).saturation(-100)} width="300" height="400" />
                     <div class={styles.info}>
                       <p class="h5">{event.name}</p>
                       <div class={styles.badge}>
