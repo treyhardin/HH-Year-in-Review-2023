@@ -14,7 +14,7 @@ export default function News() {
                 <div class={styles.newsPosts}>
                     <For each={data()[0].newsPosts} >{(newsPost, i) => 
                         <div class={styles.newsPost}>
-                            <img class={styles.image} src={urlFor(newsPost.image).width(800).height(1000)} />
+                            <img class={styles.image} src={urlFor(newsPost.image).width(800).height(600)} width="800" height="600" />
                             <div class={styles.content}>
                                 <div class={styles.title}>
                                     <p class="caption" key={i}>{newsPost.date}</p>
