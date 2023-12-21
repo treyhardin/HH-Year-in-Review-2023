@@ -217,7 +217,8 @@ p {
 
 .caption {
   font-family: var(--font-secondary);
-  font-size: 12px;
+  --font-size-desktop: 12;
+  --font-size-mobile: 10;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -255,11 +256,11 @@ p {
 
     --space-2xs: 5px;
     --space-xs: 10px;
-    --space-sm: 15px;
-    --space-md: 20px;
-    --space-lg: 30px;
-    --space-xl: 40px;
-    --space-2xl: 60px;
+    --space-sm: 10px;
+    --space-md: 15px;
+    --space-lg: 20px;
+    --space-xl: 30px;
+    --space-2xl: 40px;
 
     --radius-sm: 5px;
     --radius-lg: 10px;

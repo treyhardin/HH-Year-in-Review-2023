@@ -42,7 +42,8 @@
 }
 
 .sectionMain:global(.subdued) .mainImage {
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
+  filter: grayscale(1) contrast(0.4);
 }
 
 .sectionMain:global(.subdued)::before {

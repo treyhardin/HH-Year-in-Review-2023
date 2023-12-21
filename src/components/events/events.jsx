@@ -10,20 +10,56 @@ export default function Events() {
 
   let sectionContainer, scrollBounds
 
+  let animatedRows = []
+
+  const animateRows = () => {
+
+
+    if (sectionContainer) {
+
+      for (let i = 0; i < animatedRows.length; i++) {
+
+        const scrollParentBounds = sectionContainer.getBoundingClientRect()
+        const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
+        sectionContainer.style.setProperty('--scroll-progress', `${scrollProgress * (animatedRows[i].scrollWidth)}px`)
+      }
+
+      requestAnimationFrame(animateRows)
+
+    } else {
+      console.log('nope')
+    }
+  }
+
   const setScroll = (target, parent) => {
     const scrollParentBounds = parent.getBoundingClientRect()
     const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
     parent.style.setProperty('--scroll-progress', `${scrollProgress * (target.scrollWidth)}px`)
+    requestAnimationFrame(setScroll(target, parent))
   }
 
   const initScrollListener = (target) => {
 
-    lenis.on('scroll', () => {
-      if (sectionContainer) {
-        // Can improve performance by moving bounding box & scrollWidth calc outside of scroll event
-        throttle(setScroll(target, sectionContainer), 500)
-      }
-    })
+    animatedRows.push(target)
+    animateRows()
+
+    // if (sectionContainer) {
+    //   requestAnimationFrame(setScroll)
+    // }
+
+    // if (sectionContainer) {
+          // Can improve performance by moving bounding box & scrollWidth calc outside of scroll event
+          // throttle(setScroll(target, sectionContainer), 500)
+          // setScroll(target, sectionContainer)
+          // console.log(target)
+      // }
+
+    // lenis.on('scroll', () => {
+    //   if (sectionContainer) {
+    //     // Can improve performance by moving bounding box & scrollWidth calc outside of scroll event
+    //     throttle(setScroll(target, sectionContainer), 500)
+    //   }
+    // })
 
   }
 

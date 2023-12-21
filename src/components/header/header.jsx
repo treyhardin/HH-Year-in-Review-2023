@@ -24,8 +24,9 @@ export default function Header() {
                     </svg>
                 </a>
 
-                <a class={`${styles.brandLink} h6`} href="https://www.halfhelix.com" target="_blank">Half Helix</a>
             </div>
+
+            <a class={`${styles.brandLink} h6`} href="https://www.halfhelix.com" target="_blank">Half Helix</a>
 
             <div class={styles.contactMenu}>
                 <p class="caption">Year in Review 2023</p>
