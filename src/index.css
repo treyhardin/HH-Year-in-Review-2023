@@ -150,7 +150,7 @@ h3,
 .h3 {
   font-family: var(--font-primary);
   --font-size-desktop: 80;
-  --font-size-mobile: 20;
+  --font-size-mobile: 28;
   letter-spacing: -0.05em;
   line-height: 0.9;
   font-weight: normal;

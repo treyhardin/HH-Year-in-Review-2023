@@ -13,7 +13,7 @@ button {
   background-color: var(--color-reverse);
   cursor: pointer;
   transition: border-color 0.25s;
-  color: inherit;
+  color: var(--color-primary);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
 }
 

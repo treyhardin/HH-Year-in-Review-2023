@@ -8,9 +8,10 @@ export default function Events() {
 
   const [ data ] = createResource(getEvents)
 
-  let sectionContainer
+  let sectionContainer, scrollBounds
 
   const setScroll = (target, parent) => {
+    console.log('scroll')
     const scrollParentBounds = parent.getBoundingClientRect()
     const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
     parent.style.setProperty('--scroll-progress', `${scrollProgress * (target.scrollWidth)}px`)
@@ -33,46 +34,50 @@ export default function Events() {
 
         <div class={styles.eventsInner}>
 
-        <div class={styles.sectionTitle}>
-          <p class="h3">{data()[0].heading}</p>
-        </div>
+          <div class={styles.sectionTitle}>
+            <p class="h3">{data()[0].heading}</p>
+          </div>
 
-        <div class={styles.eventsRow} ref={el => {
-          initScrollListener(el)
-        }}>
+          <div class={styles.eventRows}>
+
+          <div class={styles.eventsRow} ref={el => {
+            initScrollListener(el)
+          }}>
+
+              <For each={data()[0].events}>{(event, i) =>
+                <Show when={i() < data()[0].events.length / 2}>
+                  <div class={styles.event}>
+                    <img class={styles.image} src={urlFor(event.image).width(600).height(800)} width="300" height="400"  />
+                    <div class={styles.info}>
+                      <p class="h5">{event.name}</p>
+                      <div class={styles.badge}>
+                        <p class="caption">{event.location}</p>
+                      </div>
+                    </div>
+                  </div>
+                </Show>
+            }</For>
+
+          </div>
+          <div class={styles.eventsRow} ref={el => {
+            initScrollListener(el)
+          }}>
 
             <For each={data()[0].events}>{(event, i) =>
-              <Show when={i() < data()[0].events.length / 2}>
-                <div class={styles.event}>
-                  <img class={styles.image} src={urlFor(event.image).width(600).height(800)} width="300" height="400"  />
-                  <div class={styles.info}>
-                    <p class="h5">{event.name}</p>
-                    <div class={styles.badge}>
-                      <p class="caption">{event.location}</p>
+              <Show when={i() >= data()[0].events.length / 2}>
+                  <div class={styles.event}>
+                    <img class={styles.image} src={urlFor(event.image).width(600).height(800)} width="300" height="400" />
+                    <div class={styles.info}>
+                      <p class="h5">{event.name}</p>
+                      <div class={styles.badge}>
+                        <p class="caption">{event.location}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Show>
-          }</For>
+                </Show>
+            }</For>
 
-        </div>
-        <div class={styles.eventsRow} ref={el => {
-          initScrollListener(el)
-        }}>
-
-          <For each={data()[0].events}>{(event, i) =>
-            <Show when={i() >= data()[0].events.length / 2}>
-                <div class={styles.event}>
-                  <img class={styles.image} src={urlFor(event.image).width(600).height(800)} width="300" height="400" />
-                  <div class={styles.info}>
-                    <p class="h5">{event.name}</p>
-                    <div class={styles.badge}>
-                      <p class="caption">{event.location}</p>
-                    </div>
-                  </div>
-                </div>
-              </Show>
-          }</For>
+          </div>
 
         </div>
 
