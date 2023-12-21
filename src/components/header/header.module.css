@@ -10,13 +10,12 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: var(--header-height);
 }
 
 .brandMenu {
     display: flex;
     flex-direction: column;
-    max-width: 320px;
-    width: 100%;
     border-radius: var(--radius-lg);
 }
 
@@ -39,4 +38,14 @@
     flex-direction: row;
     align-items: center;
     gap: var(--space-sm);
+}
+
+@media screen and (max-width: 768px) {
+    .brandLink {
+        display: none;
+    }
+
+    .logo {
+        width: 40px;
+    }
 }

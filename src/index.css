@@ -62,6 +62,8 @@
   --icon-md: 14px;
   --icon-lg: 18px;
 
+  --header-height: 80px;
+
   --gradient-primary: linear-gradient(166deg, #CE2C2C -11.36%, #6B6FD5 112.86%);
 }
 
@@ -72,16 +74,23 @@
   src: url('./assets/fonts/Tiposka-Regular.otf');
 }
 
+/* @font-face {
+  font-family: 'Neue Montreal';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./assets/fonts/PPNeueMontreal-Regular.otf');
+} */
+
 @font-face {
   font-family: 'Neue Montreal';
-  font-weight: normal;
+  font-weight: 400;
   font-style: normal;
   src: url('./assets/fonts/PPNeueMontreal-Book.otf');
 }
 
 @font-face {
   font-family: 'Neue Montreal';
-  font-weight: lighter;
+  font-weight: 300;
   font-style: normal;
   src: url('./assets/fonts/PPNeueMontreal-Light.otf');
 }
@@ -101,8 +110,7 @@ h6,
   margin: 0 0 0.2em;
   letter-spacing: -0.05em;
   line-height: 1.1;
-  font-weight: lighter;
-  
+
   /*   We use max here to ensure that font size never goes smaller than the size in the mobile designs */
   font-size: max( var(--fluid-font-size), calc(var(--font-size-mobile) * 1px) );
 }
@@ -113,14 +121,14 @@ ul,
 .caption {
   font-size: max( var(--fluid-font-size), calc(var(--font-size-mobile) * 1px) );
   /* margin: 0 0 0.4em; */
-  font-weight: normal;
+  /* font-weight: normal; */
 }
 
 h1,
 .h1 {
   font-family: var(--font-primary);
   --font-size-desktop: 160;
-  --font-size-mobile: 46;
+  --font-size-mobile: 60;
   letter-spacing: -0.05em;
   line-height: 0.85;
   font-weight: normal;
@@ -153,9 +161,9 @@ h4,
 .h4 {
   font-family: var(--font-primary);
   --font-size-desktop: 30;
-  --font-size-mobile: 20;
+  --font-size-mobile: 22;
   letter-spacing: -0.05em;
-  line-height: 0.9;
+  line-height: 1;
   font-weight: normal;
   margin: 0;
 }
@@ -165,10 +173,10 @@ h6,
 .h6 {
   font-family: var(--font-secondary);
   --font-size-desktop: 24;
-  --font-size-mobile: 24;
+  --font-size-mobile: 18;
   letter-spacing: 0.0em;
   line-height: 0.9;
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
 }
 
@@ -228,15 +236,28 @@ p {
   color: var(--color-reverse);
 }
 
-@media (prefers-color-scheme: light) {
+
+@media screen and (max-width: 768px) {
+  
   :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+    --space-2xs: 5px;
+    --space-xs: 10px;
+    --space-sm: 15px;
+    --space-md: 20px;
+    --space-lg: 30px;
+    --space-xl: 40px;
+    --space-2xl: 60px;
+
+    --radius-sm: 5px;
+    --radius-lg: 10px;
+
+    --page-margin: var(--space-md);
+    --page-margin-narrow: var(--page-margin);
+
+    --icon-sm: 10px;
+    --icon-md: 14px;
+    --icon-lg: 18px;
+
   }
 }

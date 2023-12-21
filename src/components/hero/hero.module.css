@@ -1,17 +1,14 @@
 .hero {
     width: 100%;
-    overflow: visible;
     max-width: 100%;
     min-height: 100dvh;
     height: 100dvh;
     display: flex;
-    justify-content: stretch;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: flex-start;
     position: relative;
     z-index: 1;
     overflow: hidden;
-    /* gap: -100px; */
-    /* padding: var(--space-sm); */
 }
 
 .hero::after {
@@ -26,18 +23,21 @@
 
 .content {
     z-index: 2;
-    position: relative;
+    width: 60%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     color: var(--color-reverse);
     mix-blend-mode: difference;
     padding: var(--space-lg) 0 var(--space-2xl) var(--page-margin-narrow);
-    margin-right: -5vw;
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    flex: 55% 0 1;
 }
 
 .ticker {
+    /* width: 100px; */
+    max-width: 100%;
     border-top: 1px solid currentColor;
     border-bottom: 1px solid currentColor;
     overflow: hidden;
@@ -49,7 +49,7 @@
 .ticker p {
     padding-right: var(--space-xs);
     will-change: translate;
-    animation: tickerScroll 2s linear 0s infinite;
+    animation: tickerScroll 6s linear 0s infinite;
     flex-shrink: 0;
     margin: 0;
 }
@@ -64,10 +64,10 @@
 }
 
 .heroMedia {
-    flex: 45% 1 0;
+    flex: 45% 0 1;
     z-index: 1;
     overflow: hidden;
-    padding: var(--space-lg) var(--page-margin) var(--space-lg) 0;
+    padding: var(--header-height) var(--page-margin) var(--space-lg) 0;
     display: flex;
     justify-content: flex-end;
 }
@@ -88,3 +88,27 @@
     min-width: 100%;
     z-index: 0;
 }
+
+@media screen and (max-width: 768px) {
+
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: var(--space-md);
+    }
+
+    .content {
+        position: relative;
+        width: auto;
+        padding: var(--header-height) var(--page-margin) 0;
+    }
+
+    .heroMedia {
+        flex: auto 0 0;
+        width: 100%;
+        padding: 0 var(--page-margin);
+        justify-content: flex-start;
+    }
+
+  }

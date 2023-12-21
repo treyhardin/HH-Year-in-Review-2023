@@ -13,8 +13,9 @@ export default function Hero() {
 
     let tickerTextClones = 12;
 
-    const cloneTickerText = (e, parent) => {
+    const cloneTickerText = (e, parent, content) => {
         const clone = e.cloneNode(true)
+        clone.innerHTML = content
         parent.appendChild(clone)
     }
 
@@ -22,13 +23,13 @@ export default function Hero() {
         <Show when={data()}>
             <section class={styles.hero}>
                 <div class={styles.content}>
-                    <h1>Year in Review 2023</h1>
+                    <h1>{data()[0].title}</h1>
                     <div class={`${styles.ticker} caption`} >
                         <p ref={el => {
                             for (let i = 0; i < tickerTextClones; i++) {
-                                cloneTickerText(el, el.parentNode)
+                                cloneTickerText(el, el.parentNode, data()[0].tickerText)
                             }
-                        }}>Lorem ipsum</p>
+                        }}>{data()[0].tickerText}</p>
                     </div>
                 </div>
                 <div class={styles.heroMedia} >

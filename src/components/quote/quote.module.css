@@ -38,4 +38,12 @@
   .image:nth-child(3n + 3) {
     align-self: start;
   }
+
+@media screen and (max-width: 768px) {
+
+    .imageGrid {
+    min-height: 200dvh;
+    }
+}
   
+

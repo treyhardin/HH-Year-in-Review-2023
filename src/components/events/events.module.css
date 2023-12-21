@@ -48,11 +48,6 @@
   position: sticky;
   top: 50dvh;
   height: 100dvh;
-  /* top: 50%;
-  left: 50%; */
-  /* translate: -50% -50%; */
-  /* bottom: var(--space-xl);
-  left: var(--page-margin-narrow); */
   color: var(--color-reverse);
   display: flex;
   flex-direction: column;
@@ -68,7 +63,7 @@
 }
 
 .imageScroller {
-  width: 60vw;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-self: flex-start;
@@ -87,4 +82,12 @@
   flex-shrink: 0;
   border-radius: var(--radius-lg);
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+  .imageScroller {
+    width: 70vw;
+  }
+  
 }

@@ -18,8 +18,6 @@
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  /* background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px); */
   z-index: 2;
   border-radius: var(--radius-sm);
   display: flex;
@@ -55,6 +53,11 @@
   will-change: translate, filter, scale, opacity;
   translate: 0 0 var(--depth);
   filter: blur( calc( (var(--duration) - var(--scroll-progress-mid) * 2) * var(--max-blur)));
-  /* scale: calc( ( (var(--max-scale) - var(--min-scale)) * (var(--duration)) - var(--scroll-progress-full)) + var(--min-scale)); */
   opacity: var(--scroll-progress-mid);
+}
+
+@media screen and (max-width: 768px) {
+  .imageGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
