@@ -37,7 +37,7 @@ export default function Gallery() {
 
     return (
         <Show when={data()}> 
-            <section class={styles.events} id="events">
+            <section class={styles.events}>
                     <div class={styles.event}>
                         <div class={styles.sectionMain} ref={sectionMain}>
                             <img class={styles.mainImage} src={urlFor(data()[0].images[0]).height(1200)} />

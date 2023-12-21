@@ -11,7 +11,6 @@ export default function Events() {
   let sectionContainer, scrollBounds
 
   const setScroll = (target, parent) => {
-    console.log('scroll')
     const scrollParentBounds = parent.getBoundingClientRect()
     const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
     parent.style.setProperty('--scroll-progress', `${scrollProgress * (target.scrollWidth)}px`)
@@ -30,7 +29,7 @@ export default function Events() {
 
   return (
     <Show when={data()}>
-      <section class={styles.events} ref={sectionContainer}>
+      <section class={styles.events} ref={sectionContainer} id="events">
 
         <div class={styles.eventsInner}>
 
