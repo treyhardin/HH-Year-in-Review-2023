@@ -19,7 +19,7 @@
   position: sticky;
   top: 0;
   flex-grow: 1;
-  height: 100dvh;
+  height: 100svh;
   z-index: 0;
   /* margin-bottom: -100dvh; */
 }
@@ -41,8 +41,8 @@
 
 .eventInfo {
   position: sticky;
-  top: 50dvh;
-  height: 100dvh;
+  top: 50svh;
+  height: 100svh;
   color: var(--color-reverse);
   display: flex;
   flex-direction: column;

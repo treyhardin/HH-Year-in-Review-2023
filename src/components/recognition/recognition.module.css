@@ -58,7 +58,7 @@
   pointer-events: none;
   background-color: blue;
   translate: 0% -50%;
-  width: 30dvh;
+  width: 30svh;
   transition: opacity var(--anim-easing) .3s;
   border-radius: var(--radius-lg);
 }

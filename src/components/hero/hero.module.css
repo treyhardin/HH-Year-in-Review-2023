@@ -1,8 +1,8 @@
 .hero {
     width: 100%;
     max-width: 100%;
-    min-height: 100dvh;
-    height: 100dvh;
+    min-height: 100svh;
+    height: 100svh;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -75,7 +75,7 @@
 .heroAsset {
     border-radius: var(--radius-lg);
     /* aspect-ratio: 3 / 5; */
-    max-height: 85dvh;
+    max-height: 85svh;
     height: auto;
     max-width: 100%;
 }
