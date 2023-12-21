@@ -51,7 +51,9 @@ export default function Events() {
                             initObserver(el, sectionMain[i()])
                         }}>
                             <For each={event.images}>{(image, j) =>
-                                <img class={styles.image} src={urlFor(image).height(1200)} />
+                                <Show when={j() !== 0}>
+                                    <img class={styles.image} src={urlFor(image).height(1200)} />
+                                </Show>
                             }</For>
                         </div>
                     </div>
