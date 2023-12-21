@@ -1,21 +1,21 @@
 button {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-xs);
-    align-items: center;
-    border-radius: var(--radius-rounded);
-    border: 1px solid transparent;
-    padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-sm);
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: var(--color-reverse);
-    cursor: pointer;
-    transition: border-color 0.25s;
-    color: inherit;
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
-  }
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xs);
+  align-items: center;
+  border-radius: var(--radius-rounded);
+  border: 1px solid transparent;
+  padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-sm);
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-reverse);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: inherit;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+}
 
 button:hover {
   /* border-color: #646cff; */
@@ -24,6 +24,10 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 2px solid -webkit-focus-ring-color;
+}
+
+button::before {
+  content: "";
 }
 
 .icon {

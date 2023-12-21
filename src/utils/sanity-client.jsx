@@ -18,7 +18,7 @@ export const urlFor = (source) => {
 }
 
 export async function getHeroSettings() {
-  const heroSettings = await client.fetch('*[_type == "heroSettings"]{ title, tickerText, "heroVideoURL": heroVideo.asset->url, "backgroundVideoURL": backgroundVideo.asset->url }')
+  const heroSettings = await client.fetch('*[_type == "heroSettings"]{ title, tickerText, "heroVideoURL": heroVideo.asset->url, "backgroundVideoURL": backgroundVideo.asset->url, backgroundFallback }')
   return heroSettings
 }
 
