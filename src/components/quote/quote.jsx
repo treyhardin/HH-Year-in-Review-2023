@@ -1,6 +1,6 @@
-import { For, Show, createEffect, createResource, createSignal } from 'solid-js'
+import { For, Show, createResource } from 'solid-js'
 import styles from './quote.module.css'
-import { getEvents, getEventsSettings, getQuoteSettings, urlFor } from '../../utils/sanity-client'
+import { getQuoteSettings, urlFor } from '../../utils/sanity-client'
 
 export default function Quote() {
 

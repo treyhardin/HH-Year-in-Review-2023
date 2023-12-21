@@ -26,15 +26,10 @@ button:focus-visible {
   outline: 2px solid -webkit-focus-ring-color;
 }
 
-button::before {
-  content: "";
-}
-
 .icon {
-  /* width: */
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-rounded);
-  background: var(--gradient-primary);
+  background: var(--color-primary);
   padding: var(--space-sm);
   color: var(--color-reverse);
   position: relative;
@@ -47,14 +42,7 @@ button::before {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-}
-
-.buttonPrimary {
-
-}
-
-.buttonSecondary {
-    
+  stroke-width: 2px;
 }
 
 .buttonTertiary {
@@ -62,6 +50,7 @@ button::before {
     padding: 0;
     transition: color var(--anim-short);
     z-index: 1;
+    box-shadow: none;
 }
 
 .buttonTertiary .buttonText {
@@ -70,30 +59,9 @@ button::before {
     margin: 0;
 }
 
-.buttonTertiary::after {
-    --background-offset-vertical: -3px;
-    --background-offset-horizontal: -8px;
-    content: "";
-    position: absolute;
-    top: var(--background-offset-vertical);
-    right: 100%;
-    bottom: var(--background-offset-vertical);
-    left: var(--background-offset-horizontal);
-    background-color: var(--color-header);
-    border-radius: var(--radius-rounded);
-    z-index: 0;
-    opacity: 0;
-    transition: right var(--anim-short), opacity var(--anim-short);
-}
-
-.buttonTertiary:hover::after {
-    opacity: 1;
-    right: calc(var(--background-offset-horizontal) - var(--space-2xs));
-    transition: right var(--anim-short), opacity var(--anim-short);
-}
-
 .buttonTertiary:hover {
     color: var(--color-primary);
+    background-color: transparent;
 }
 
 .buttonTertiary svg {
@@ -107,8 +75,6 @@ button::before {
 .buttonTertiary:hover svg {
     translate: var(--space-2xs) 0;
 }
-
-
 
 .buttonTertiary:focus,
 .buttonTertiary:focus-visible {

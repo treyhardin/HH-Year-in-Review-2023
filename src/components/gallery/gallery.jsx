@@ -1,10 +1,10 @@
-import { For, Show, createEffect, createResource, createSignal } from 'solid-js'
-import styles from './events.module.css'
-import { getEvents, getEventsSettings, urlFor } from '../../utils/sanity-client'
+import { For, Show, createResource } from 'solid-js'
+import styles from './gallery.module.css'
+import { getGallerySettings, urlFor } from '../../utils/sanity-client'
 
-export default function Events() {
+export default function Gallery() {
 
-    const [ data ] = createResource(getEvents)
+    const [ data ] = createResource(getGallerySettings)
 
     let sectionMain =  [];
 
@@ -38,27 +38,25 @@ export default function Events() {
     return (
         <Show when={data()}> 
             <section class={styles.events} id="events">
-                <For each={data()}>{(event, i) =>
                     <div class={styles.event}>
-                        <div class={styles.sectionMain} ref={sectionMain[i()]}>
-                            <img class={styles.mainImage} src={urlFor(event.images[0]).height(1200)} />
+                        <div class={styles.sectionMain} ref={sectionMain}>
+                            <img class={styles.mainImage} src={urlFor(data()[0].images[0]).height(1200)} />
                         </div>
                         <div class={styles.eventInfo}>
-                                <h3>{event.name}</h3>
-                                <p>{event.location}</p>
+                                <h3>{data()[0].heading}</h3>
+                                <p>{data()[0].subheading}</p>
                             </div>
                         <div class={styles.imageScroller} ref={el => {
-                            initObserver(el, sectionMain[i()])
+                            initObserver(el, sectionMain)
                         }}>
-                            <For each={event.images}>{(image, j) =>
-                                <Show when={j() !== 0}>
+                            <For each={data()[0].images}>{(image, i) =>
+                                <Show when={i() !== 0}>
                                     <img class={styles.image} src={urlFor(image).height(1200)} />
                                 </Show>
                             }</For>
                         </div>
                     </div>
-                }
-                </For>
+        
             </section>
         </Show>
     )

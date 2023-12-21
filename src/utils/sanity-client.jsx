@@ -22,19 +22,14 @@ export async function getHeroSettings() {
   return heroSettings
 }
 
-export async function getHeroImages() {
-  const heroImages = await client.fetch('*[_type == "heroImage"]')
-  return heroImages
+export async function getNews() {
+  const news = await client.fetch('*[_type == "newsSettings"]')
+  return news
 }
 
-export async function getClients() {
-  const clients = await client.fetch('*[_type == "client"]')
-  return clients
-}
-
-export async function getAwards() {
-  const awards = await client.fetch('*[_type == "award"]')
-  return awards
+export async function getClientsSettings() {
+  const clientSettings = await client.fetch('*[_type == "clientsSettings"]')
+  return clientSettings
 }
 
 export async function getProjects() {
@@ -42,9 +37,9 @@ export async function getProjects() {
   return projects
 }
 
-export async function getTeam() {
-  const teamMembers = await client.fetch('*[_type == "teamMember"]')
-  return teamMembers
+export async function getTeamSettings() {
+  const teamSettings = await client.fetch('*[_type == "teamSettings"]')
+  return teamSettings
 }
 
 export async function getQuoteSettings() {
@@ -52,17 +47,18 @@ export async function getQuoteSettings() {
   return quoteSettings
 }
 
-export async function getEvents() {
-  const events = await client.fetch('*[_type == "event"]')
-  return events
-}
-
 export async function getEventsSettings() {
   const eventSettings = await client.fetch('*[_type == "eventsSettings"]')
   return eventSettings
 }
 
-export async function getNews() {
-  const news = await client.fetch('*[_type == "news"]')
-  return news
+export async function getGallerySettings() {
+  const gallerySettings = await client.fetch('*[_type == "gallerySettings"]')
+  return gallerySettings
 }
+
+export async function getAwardsSettings() {
+  const awardSettings = await client.fetch('*[_type == "awardSettings"]')
+  return awardSettings
+}
+
