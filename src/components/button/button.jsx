@@ -6,7 +6,14 @@ export default function Button({style, text, link}) {
     switch (style) {
         case 'primary':
             return (
-                <button link={link} class={`${styles.buttonPrimary} caption`}>
+                <button 
+                    link={link} 
+                    class={
+                        `${styles.buttonPrimary} caption`
+                    }
+                    onClick={() =>{
+                        window.open(link, '_blank').focus();
+                    }}>
                     {text}
                     <div class={styles.icon}>
                         <Icon glyph={"arrowDiagonal"} />

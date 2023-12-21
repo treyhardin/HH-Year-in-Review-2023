@@ -1,4 +1,4 @@
-.header {
+/* .header {
     position: fixed;
     top: 0;
     right: 0;
@@ -13,19 +13,29 @@
     height: var(--header-height);
     color: var(--color-reverse);
     mix-blend-mode: difference;
-}
+} */
 
 .brandMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    height: var(--header-height);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     border-radius: var(--radius-lg);
+    padding: 0 var(--page-margin);
+    color: var(--color-reverse);
+    mix-blend-mode: difference;
 }
 
 .brandLink {
     position: absolute;
     left: var(--page-margin-narrow);
-    top: 50%;
-    translate: 0 -50%;
+    /* top: 50%;
+    translate: 0 -50%; */
+    width: max-content;
     margin: 0;
     color: inherit;
 }
@@ -36,10 +46,16 @@
 }
 
 .contactMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0 var(--page-margin);
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: var(--space-sm);
+    z-index: 9;
+    height: var(--header-height);
 }
 
 @media screen and (max-width: 768px) {
