@@ -37,7 +37,7 @@ export default function Events() {
 
     return (
         <Show when={data()}> 
-            <section class={styles.events}>
+            <section class={styles.events} id="events">
                 <For each={data()}>{(event, i) =>
                     <div class={styles.event}>
                         <div class={styles.sectionMain} ref={sectionMain[i()]}>

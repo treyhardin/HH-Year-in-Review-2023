@@ -10,7 +10,7 @@ export default function Recognition() {
 
   return (
     <Show when={data()}>
-      <section class={styles.recognition}>
+      <section class={styles.recognition} id="recognition">
         <p class={`${styles.sectionTitle} h3`}>Recognition</p>
         <For each={data()}>{(award, i) =>
           <div class={styles.awardItem}>

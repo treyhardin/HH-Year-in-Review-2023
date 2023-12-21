@@ -53,6 +53,7 @@
 
 .navigationLink {
   color: inherit;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

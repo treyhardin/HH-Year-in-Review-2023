@@ -21,6 +21,7 @@
     grid-template-columns: repeat(3, 1fr);
     position: relative;
     z-index: 1;
+    gap: var(--space-md);
   }
   
   .image {

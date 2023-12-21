@@ -197,6 +197,7 @@ body {
   color: var(--color-ink);
   font-family: var(--font-secondary);
   font-weight: normal;
+  scroll-behavior: smooth;
 }
 
 p {

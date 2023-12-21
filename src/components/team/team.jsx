@@ -8,7 +8,7 @@ export default function Team() {
 
     return (
         <Show when={data()}>
-            <section class={styles.team}>
+            <section class={styles.team} id="team">
                 <div class={styles.sectionTitle}>
                     <p class="h1">25</p>
                     <p class="h6">New Team Members</p>

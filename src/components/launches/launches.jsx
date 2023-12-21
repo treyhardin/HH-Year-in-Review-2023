@@ -54,7 +54,7 @@ export default function Launches() {
 
   return (
     <Show when={data()}>
-      <section class={styles.launches} ref={imageGrid}>
+      <section class={styles.launches} ref={imageGrid} id="launches">
         <div class={styles.launchesInner}>
           <div class={styles.sectionTitle}>
             {/* <p class="caption">We Launched</p> */}
