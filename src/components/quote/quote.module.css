@@ -5,7 +5,7 @@
   }
   
   .sectionTitle {
-    min-height: 100svh;
+    min-height: 100lvh;
     position: sticky;
     top: 0;
     display: flex;
@@ -16,7 +16,7 @@
   }
   
   .imageGrid {
-    min-height: 300svh;
+    min-height: 300lvh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     position: relative;
@@ -43,7 +43,7 @@
 @media screen and (max-width: 768px) {
 
     .imageGrid {
-    min-height: 200svh;
+    min-height: 200lvh;
     }
 }
   

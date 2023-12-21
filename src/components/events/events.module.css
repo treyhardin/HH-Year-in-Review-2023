@@ -19,9 +19,8 @@
   position: sticky;
   top: 0;
   flex-grow: 1;
-  height: 100svh;
+  height: 100lvh;
   z-index: 0;
-  /* margin-bottom: -100dvh; */
 }
 
 
@@ -35,14 +34,13 @@
 }
 
 .sectionMain:global(.subdued) .mainImage {
-  /* filter: blur(20px) grayscale(100%); */
   filter: brightness(0.1) grayscale(100%);
 }
 
 .eventInfo {
   position: sticky;
-  top: 50svh;
-  height: 100svh;
+  top: 50lvh;
+  height: 100lvh;
   color: var(--color-reverse);
   display: flex;
   flex-direction: column;

@@ -1,10 +1,10 @@
 .team {
-  min-height: 100svh;
+  min-height: 100lvh;
   padding: var(--space-xl) var(--page-margin);
 }
 
 .sectionTitle {
-  height: 100svh;
+  height: 100lvh;
   position: sticky;
   top: 0;
   display: flex;
@@ -27,7 +27,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
-  height: 60svh;
+  height: 60lvh;
 }
 
 .teamMember:nth-child(6n + 1) {
