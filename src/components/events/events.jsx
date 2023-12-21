@@ -17,18 +17,16 @@ export default function Events() {
 
     if (sectionContainer) {
 
-      for (let i = 0; i < animatedRows.length; i++) {
+      const scrollParentBounds = sectionContainer.getBoundingClientRect()
+      const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
 
-        const scrollParentBounds = sectionContainer.getBoundingClientRect()
-        const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
+      for (let i = 0; i < animatedRows.length; i++) {
         sectionContainer.style.setProperty('--scroll-progress', `${scrollProgress * (animatedRows[i].scrollWidth)}px`)
       }
 
       requestAnimationFrame(animateRows)
 
-    } else {
-      console.log('nope')
-    }
+    } 
   }
 
   const setScroll = (target, parent) => {
