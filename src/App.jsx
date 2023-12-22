@@ -1,19 +1,22 @@
 import './App.css'
+import Preloader from './components/preloader/preloader'
 import Hero from './components/hero/hero'
-import News from './components/news/news'
-import Gallery from './components/gallery/gallery'
-import Team from './components/team/team'
 import Header from './components/header/header'
+import Navigation from './components/navigation/navigation'
 import Footer from './components/footer/footer'
 import Lenis from '@studio-freight/lenis'
-import Quote from './components/quote/quote'
-import Navigation from './components/navigation/navigation'
-import Clients from './components/clients/clients'
-import Awards from './components/awards/awards'
-import Events from './components/events/events'
-import { createSignal } from 'solid-js'
-import Preloader from './components/preloader/preloader'
-import Projects from './components/projects/projects'
+import { createSignal, lazy } from 'solid-js'
+
+
+const News = lazy(() => import("./components/news/news"));
+const Quote = lazy(() => import("./components/quote/quote"));
+const Clients = lazy(() => import("./components/clients/clients"));
+const Projects = lazy(() => import("./components/projects/projects"));
+const Awards = lazy(() => import("./components/awards/awards"));
+const Events = lazy(() => import("./components/events/events"));
+const Gallery = lazy(() => import("./components/gallery/gallery"));
+const Team = lazy(() => import("./components/team/team"));
+
 
 export const lenis =  new Lenis()
 export const [ loaded, setLoaded ] = createSignal(false)
