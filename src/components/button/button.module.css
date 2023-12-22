@@ -11,14 +11,21 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: var(--color-reverse);
+  color: var(--color-primary);
   cursor: pointer;
   transition: border-color 0.25s;
-  color: var(--color-primary);
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+  transition: background-color .3s var(--anim-easing), color .3s var(--anim-easing);
 }
 
 button:hover {
   /* border-color: #646cff; */
+  background-color: var(--color-secondary);
+  color: var(--color-reverse);
+}
+
+button:hover .icon svg {
+  color: var(--color-secondary);
 }
 
 button:focus,
@@ -29,9 +36,8 @@ button:focus-visible {
 .icon {
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-rounded);
-  background: var(--color-primary);
+  background-color: currentColor;
   padding: var(--space-sm);
-  color: var(--color-reverse);
   position: relative;
 }
 
@@ -43,6 +49,7 @@ button:focus-visible {
   left: 50%;
   translate: -50% -50%;
   stroke-width: 2px;
+  color: var(--color-reverse);
 }
 
 .buttonTertiary {

@@ -32,11 +32,6 @@ export async function getClientsSettings() {
   return clientSettings
 }
 
-export async function getProjects() {
-  const projects = await client.fetch('*[_type == "project"]')
-  return projects
-}
-
 export async function getTeamSettings() {
   const teamSettings = await client.fetch('*[_type == "teamSettings"]')
   return teamSettings
@@ -62,3 +57,7 @@ export async function getAwardsSettings() {
   return awardSettings
 }
 
+export async function getFooterData() {
+  const footerData = await client.fetch('*[_type == "footerSettings"]{ heading, subheading, buttonText, buttonURL, "backgroundVideoURL": backgroundVideo.asset -> url, fallbackImage, links }')
+  return footerData
+}

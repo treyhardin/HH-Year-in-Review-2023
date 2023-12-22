@@ -11,8 +11,11 @@ import Navigation from './components/navigation/navigation'
 import Clients from './components/clients/clients'
 import Awards from './components/awards/awards'
 import Events from './components/events/events'
+import { Show, Suspense, createSignal } from 'solid-js'
+import Preloader from './components/preloader/preloader'
 
 export const lenis =  new Lenis()
+export const [ loaded, setLoaded ] = createSignal(false)
 
 function App() {
 
@@ -23,21 +26,27 @@ function App() {
 
   requestAnimationFrame(raf)
 
+  addEventListener("load", (event) => {
+    setLoaded(true)
+  });
+  
+
   return (
     <>
-      <Header />
-      <Navigation />
-      <main>
-          <Hero />
-          <News />
-          <Clients />
-          <Awards />
-          <Quote />
-          <Events />
-          <Gallery />
-          <Team />
-      </main>
-      <Footer />
+        <Preloader />
+        <Header />
+        <Navigation />
+        <main>
+            <Hero />
+            <News />
+            <Clients />
+            <Awards />
+            <Quote />
+            <Events />
+            <Gallery />
+            <Team />
+        </main>
+        <Footer />
     </>
   )
 }

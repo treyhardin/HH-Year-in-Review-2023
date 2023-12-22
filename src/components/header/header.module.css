@@ -32,13 +32,25 @@
 
 .brandLink {
     position: absolute;
-    /* left: var(--page-margin-narrow); */
-    top: 0;
-    left: 50%;
-    translate: -50% 0;
+    left: var(--page-margin-narrow);
     width: max-content;
     margin: 0;
     color: inherit;
+}
+
+.siteTitle {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    translate: -50% calc( var(--header-height) / 2);
+    z-index: 9;
+    color: var(--color-reverse);
+    mix-blend-mode: difference;
+}
+
+.siteTitle p {
+    top: 50%;
+    translate: 0% -50%;
 }
 
 .logo {

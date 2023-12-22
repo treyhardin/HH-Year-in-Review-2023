@@ -35,7 +35,7 @@ export default function Events() {
 
   const setScroll = (target, parent) => {
     const scrollParentBounds = parent.getBoundingClientRect()
-    const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
+    const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.bottom / scrollParentBounds.height) * -1)
     parent.style.setProperty('--scroll-progress', `${scrollProgress * (target.scrollWidth)}px`)
     requestAnimationFrame(setScroll(target, parent))
   }

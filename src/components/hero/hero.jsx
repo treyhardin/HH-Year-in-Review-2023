@@ -42,6 +42,7 @@ export default function Hero() {
                         playsinline 
                         src={ data()[0].heroVideoURL } 
                         onloadedmetadata="this.muted = true" 
+                        loading="eager"
                     />
                 </div>
                 <video 
@@ -53,6 +54,7 @@ export default function Hero() {
                     src={ data()[0].backgroundVideoURL } 
                     poster={urlFor(data()[0].backgroundFallback).width(1440)} 
                     onloadedmetadata="this.muted = true" 
+                    loading="eager"
                 />
             </section>
         </Show>
