@@ -19,7 +19,7 @@ export default function Events() {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
-
+ 
       const scrollParentBounds = sectionContainer.getBoundingClientRect()
       const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
 
