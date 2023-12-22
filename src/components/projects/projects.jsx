@@ -32,6 +32,10 @@ export default function Projects() {
     let observer = new IntersectionObserver(callback, options);
 
 
+    createEffect(() => {
+        console.log(data())
+    })
+
     return (
         <Show when={data()}>
             <section class={styles.projects} id="projects">
@@ -43,15 +47,40 @@ export default function Projects() {
                             <div class={styles.projectCard} id={i()} ref={el => {
                                 observer.observe(el);
                             }}>
-                                <h3 class="h4">{project.client}</h3>
-                                <p>{project.feature}</p>
-                                <Show when={project.buttonText && project.buttonURL}>
-                                    <Button 
-                                        style="tertiary" 
-                                        text={project.buttonText}
-                                        link={project.buttonURL}
-                                    />
-                                </Show>
+                                <div class={styles.projectCardMedia}>
+                                    <Switch>
+                                        <Match when={project.videoURL}>
+                                            <video 
+                                                class={styles.video} 
+                                                autoplay 
+                                                loop 
+                                                muted  
+                                                defaultmuted 
+                                                playsinline 
+                                                src={ project.videoURL } 
+                                                onloadedmetadata="this.muted = true" 
+                                                alt="Video showcase of project feature."
+                                            />
+                                        </Match>
+                                        <Match when={!project.videoURL && project.mainImage}>
+                                            <img 
+                                                class={styles.cardImage}
+                                                src={urlFor(project.mainImage).width(600)} 
+                                            />
+                                        </Match>
+                                    </Switch>
+                                </div>
+                                <div class={styles.projectCardInfo}>
+                                    <h3 class="h4">{project.client}</h3>
+                                    <p>{project.feature}</p>
+                                    <Show when={project.buttonText && project.buttonURL}>
+                                        <Button 
+                                            style="tertiary" 
+                                            text={project.buttonText}
+                                            link={project.buttonURL}
+                                        />
+                                    </Show>
+                                </div>
                             </div>
                         </div>
                     </>

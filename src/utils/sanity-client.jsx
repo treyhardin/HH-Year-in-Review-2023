@@ -47,7 +47,7 @@ export async function getEvents() {
 }
 
 export async function getProjects() {
-  const projects = await client.fetch('*[_type == "projectsSettings"]{ heading, subheading, projects}')
+  const projects = await client.fetch('*[_type == "projectsSettings"]{ heading, subheading, "projects": projects[]{ client, feature, linkText, linkURL, "videoURL": video.asset->url, mainImage, backgroundImage }}')
   return projects
 }
 
