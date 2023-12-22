@@ -53,7 +53,7 @@ export default function Events() {
         <div class={styles.eventsInner}>
 
           <div class={styles.sectionTitle}>
-            <p class="h3">{data()[0].heading}</p>
+            <p class="h4">{data()[0].heading}</p>
           </div>
 
           <div class={styles.eventRows}>
@@ -67,7 +67,7 @@ export default function Events() {
                   <div class={styles.event}>
                     <img class={styles.image} src={urlFor(event.image).width(600).height(800).saturation(-100)} width="300" height="400"  />
                     <div class={styles.info}>
-                      <p class="h5">{event.name}</p>
+                      <p class="h6">{event.name}</p>
                       <div class={styles.badge}>
                         <p class="caption">{event.location}</p>
                       </div>
@@ -86,7 +86,7 @@ export default function Events() {
                   <div class={styles.event}>
                     <img class={styles.image} src={urlFor(event.image).width(600).height(800).saturation(-100)} width="300" height="400" />
                     <div class={styles.info}>
-                      <p class="h5">{event.name}</p>
+                      <p class="h6">{event.name}</p>
                       <div class={styles.badge}>
                         <p class="caption">{event.location}</p>
                       </div>

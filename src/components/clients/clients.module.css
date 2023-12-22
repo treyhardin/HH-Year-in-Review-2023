@@ -1,5 +1,5 @@
 .launches {
-  min-height: 400lvh;
+  min-height: 300lvh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
   --max-translate: 10vh;
   width: 100%;
 
-  --duration: calc(var(--seed) * 0.75 + 0.2);
+  --duration: calc(var(--seed) * 0.5 + 0.5);
   --scroll-progress-full: calc(var(--scroll-progress) / var(--duration));
   --scroll-progress-mid: calc( min( min(var(--duration), var(--scroll-progress-full) * 2), var(--duration) - var(--scroll-progress-full)));
   --depth: calc( (var(--min-scale) - var(--max-scale)) * var(--scroll-progress-full) + var(--min-scale));

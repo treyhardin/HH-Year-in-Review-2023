@@ -61,13 +61,12 @@
 .event::before {
   content: "";
   background-color: var(--color-primary);
+  /* background: linear-gradient(0deg, rgba(27, 69, 217, 100%) 0%, rgba(27, 69, 217, 50%) 100%); */
   position: absolute;
   width: 100%;
   height: 100%;
-  /* offset: 0; */
   z-index: 1;
-  opacity: 0.6;
-  /* mix-blend-mode: screen; */
+  opacity: 0.7;
 }
 
 .image {
@@ -76,7 +75,6 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  /* filter: grayscale(1) contrast(0.4); */
 }
 
 .info {
@@ -84,7 +82,9 @@
   padding: var(--space-xs);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: var(--space-sm);
+  justify-content: flex-end;
   align-items: flex-start;
   flex-grow: 1;
   position: relative;

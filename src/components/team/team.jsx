@@ -19,7 +19,7 @@ export default function Team() {
                             <div class={styles.teamMember} key={i()}>
                                 <img class={styles.image} src={urlFor(teamMember.image).width(500).height(500)} />
                                 <div class={styles.info}>
-                                    <p class={`${styles.name} h6`}>{teamMember.name}</p>
+                                    <p class={`${styles.name} h5`}>{teamMember.name}</p>
                                     <p class={`${styles.role} caption`}>{teamMember.role}</p>
                                 </div>
                             </div>
