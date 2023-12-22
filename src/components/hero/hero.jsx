@@ -2,11 +2,7 @@ import styles from './hero.module.css'
 import { Show, createResource } from 'solid-js';
 import { getHeroSettings, urlFor } from '../../utils/sanity-client';
 
-// import * as NODES from "three/examples/jsm/nodes/Nodes.js";
-
-
 export default function Hero() {
-
 
     const [ data ] = createResource(getHeroSettings);
 
@@ -42,6 +38,9 @@ export default function Hero() {
                         src={ data()[0].heroVideoURL } 
                         onloadedmetadata="this.muted = true" 
                         loading="eager"
+                        width="45vw"
+                        height="100vh"
+                        alt="Demo reel video of recent Half Helix design & development work."
                     />
                 </div>
                 <video 
@@ -54,6 +53,9 @@ export default function Hero() {
                     poster={urlFor(data()[0].backgroundFallback).width(1440)} 
                     onloadedmetadata="this.muted = true" 
                     loading="eager"
+                    width="100vw"
+                    height="100vh"
+                    aria-hidden="true"
                 />
             </section>
         </Show>

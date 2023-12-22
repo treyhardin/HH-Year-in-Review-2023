@@ -1,8 +1,6 @@
 import { Show, createEffect, createResource, onMount } from 'solid-js'
 import styles from './events.module.css'
 import { getEvents, urlFor } from '../../utils/sanity-client'
-import { lenis } from '../../App'
-import { throttle } from '../../utils/helpers'
 
 export default function Events() {
 
@@ -53,7 +51,7 @@ export default function Events() {
         <div class={styles.eventsInner}>
 
           <div class={styles.sectionTitle}>
-            <p class="h4">{data()[0].heading}</p>
+            <h2 class="h4">{data()[0].heading}</h2>
           </div>
 
           <div class={styles.eventRows}>
@@ -65,9 +63,15 @@ export default function Events() {
               <For each={data()[0].events}>{(event, i) =>
                 <Show when={i() < data()[0].events.length / 2}>
                   <div class={styles.event}>
-                    <img class={styles.image} src={urlFor(event.image).width(600).height(800).saturation(-100)} width="300" height="400"  />
+                    <img 
+                      class={styles.image} 
+                      src={urlFor(event.image).width(600).height(800).saturation(-100)} 
+                      width="300" 
+                      height="400"
+                      alt="Decorative image from a 2023 Half Helix event." 
+                    />
                     <div class={styles.info}>
-                      <p class="h6">{event.name}</p>
+                      <h4 class="h6">{event.name}</h4>
                       <div class={styles.badge}>
                         <p class="caption">{event.location}</p>
                       </div>

@@ -44,6 +44,7 @@
   --max-blur: 20px;
   --max-translate: 10vh;
   width: 100%;
+  height: auto;
 
   --duration: calc(var(--seed) * 0.5 + 0.5);
   --scroll-progress-full: calc(var(--scroll-progress) / var(--duration));

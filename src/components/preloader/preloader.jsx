@@ -1,4 +1,3 @@
-import { onCleanup } from 'solid-js'
 import styles from './preloader.module.css'
 import { loaded } from '../../App'
 

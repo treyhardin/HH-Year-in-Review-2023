@@ -29,18 +29,19 @@ export default function Gallery() {
         let observer = new IntersectionObserver(callback, options);
         observer.observe(el)
     }
-      
-
-    // createEffect(() => {
-    //     console.log(settingsData())
-    // })
 
     return (
         <Show when={data()}> 
             <section class={styles.events}>
                     <div class={styles.event}>
                         <div class={styles.sectionMain} ref={sectionMain}>
-                            <img class={styles.mainImage} src={urlFor(data()[0].images[0]).height(1200)} />
+                            <img 
+                                class={styles.mainImage} 
+                                src={urlFor(data()[0].images[0]).height(1200)} 
+                                width="100vw" 
+                                height="100vh"
+                                alt="Photo taken at a Half Helix social event."
+                            />
                         </div>
                         <div class={styles.eventInfo}>
                                 <h3>{data()[0].heading}</h3>
@@ -51,7 +52,12 @@ export default function Gallery() {
                         }}>
                             <For each={data()[0].images}>{(image, i) =>
                                 <Show when={i() !== 0}>
-                                    <img class={styles.image} src={urlFor(image).height(1200)} />
+                                    <img 
+                                        class={styles.image} 
+                                        src={urlFor(image).height(1200)} 
+                                        width="60vw"
+                                        alt="Photo taken at a Half Helix social event."
+                                    />
                                 </Show>
                             }</For>
                         </div>

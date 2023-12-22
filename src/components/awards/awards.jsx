@@ -11,7 +11,7 @@ export default function Awards() {
   return (
     <Show when={data()}>
       <section class={styles.recognition} id="recognition">
-        <p class={`${styles.sectionTitle} h3`}>{data()[0].heading}</p>
+        <h2 class={`${styles.sectionTitle} h3`}>{data()[0].heading}</h2>
         <For each={data()[0].awards}>{(award, i) =>
           <div class={styles.awardItem}>
             <div class={styles.awardInfo}>
@@ -20,9 +20,14 @@ export default function Awards() {
               <p class={`${styles.source} caption`}>{award.source}</p>
             </div>
             <Show when={award.images}>
-              <img src={urlFor(award.images[0]).width(800)} class={styles.imageWrapper} ref={el => {
-                el.style.rotate = `${Math.random() * maxImageRotation * 2 - maxImageRotation}deg`
-              }} />
+              <img 
+                src={urlFor(award.images[0]).width(800)} 
+                class={styles.imageWrapper}
+                alt="Decorative lifestyle image relating to the project awarded."
+                ref={el => {
+                  el.style.rotate = `${Math.random() * maxImageRotation * 2 - maxImageRotation}deg`
+                }} 
+              />
             </Show>
           </div>
         }</For>

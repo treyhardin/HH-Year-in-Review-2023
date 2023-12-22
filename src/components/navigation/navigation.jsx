@@ -3,10 +3,6 @@ import styles from './navigation.module.css'
 
 export default function Navigation() {
 
-  const options = {
-
-  }
-
   return (
     <div class={styles.navigation}>
       <div class={styles.progressBar}>

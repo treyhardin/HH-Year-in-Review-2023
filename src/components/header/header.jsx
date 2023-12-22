@@ -1,7 +1,6 @@
 import Button from '../button/button'
 import Icon from '../icon/icon'
 import styles from './header.module.css'
-import { createSignal, onMount } from 'solid-js'
 
 export default function Header() {
 

@@ -41,18 +41,10 @@
   transition: opacity 2s var(--anim-easing);
 }
 
-.sectionMain:global(.subdued) .mainImage {
-  /* filter: grayscale(100%); */
-  /* filter: grayscale(1) contrast(0.4); */
-}
 
 .sectionMain:global(.subdued)::before {
   opacity: 0.8;
 } 
-
-/* .sectionMain:global(.subdued) .mainImage {
-  filter: brightness(0.1) grayscale(100%);
-} */
 
 .eventInfo {
   position: sticky;

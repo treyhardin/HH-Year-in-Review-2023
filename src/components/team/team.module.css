@@ -59,6 +59,7 @@
   filter: grayscale(1);
   width: 60%;
   aspect-ratio: 1 / 1;
+  height: auto;
 }
 
 .info {

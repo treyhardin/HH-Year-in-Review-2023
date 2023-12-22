@@ -17,9 +17,15 @@ export default function Team() {
                     <For each={data()[0].teamMembers}>{(teamMember, i) =>
                         <Show when={teamMember.image}>
                             <div class={styles.teamMember} key={i()}>
-                                <img class={styles.image} src={urlFor(teamMember.image).width(500).height(500)} />
+                                <img 
+                                    class={styles.image} 
+                                    src={urlFor(teamMember.image).width(500).height(500)} 
+                                    width="30vw"
+                                    height="30vh"
+                                    alt="Headshot image of a new Half Helix team member."
+                                />
                                 <div class={styles.info}>
-                                    <p class={`${styles.name} h5`}>{teamMember.name}</p>
+                                    <h4 class={`${styles.name} h5`}>{teamMember.name}</h4>
                                     <p class={`${styles.role} caption`}>{teamMember.role}</p>
                                 </div>
                             </div>

@@ -14,7 +14,13 @@ export default function Quote() {
                 </div>
                 <div class={styles.imageGrid}>
                     <For each={data()[0].images}>{(image, i) => 
-                        <img class={styles.image} src={urlFor(image).width(400)} />
+                        <img 
+                            class={styles.image} 
+                            src={urlFor(image).width(400)}
+                            width="30vw"
+                            height="30vh" 
+                            alt="Decorative images showing Half Helix events & culture."
+                        />
                     }</For>
                 </div>
             </section>

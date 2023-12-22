@@ -67,10 +67,6 @@
   opacity: 1;
 }
 
-.image {
-
-}
-
 
 @media screen and (max-width: 768px) {
 
@@ -90,11 +86,7 @@
     align-items: stretch;
     gap: var(--space-xs);
   }
-
-  .client {
-    /* margin-bottom: var(--space-xs); */
-  }
-
+  
   .imageWrapper {
     display: none;
   }

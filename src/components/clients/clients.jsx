@@ -1,7 +1,6 @@
-import { For, createEffect, createResource } from 'solid-js'
+import { For, createResource } from 'solid-js'
 import styles from './clients.module.css'
 import { getClientsSettings, urlFor } from '../../utils/sanity-client'
-import { lenis } from '../../App'
 
 export default function Clients() {
 
@@ -32,7 +31,14 @@ export default function Clients() {
           </div>
           <div class={styles.imageGrid}>
             <For each={data()[0].logos}>{(client, i) =>
-              <img key={i()} src={urlFor(client).width(600).height(300)} class={styles.logoImage} style={`--seed: ${Math.random()}`}/>
+              <img 
+                key={i()} 
+                src={urlFor(client).width(600).height(300)} 
+                class={styles.logoImage} style={`--seed: ${Math.random()}`}
+                width="20vw"
+                height="20vh"
+                alt="Logo of a Half Helix client who launched in 2023."
+              />
             }</For>
           </div>
         </div>
