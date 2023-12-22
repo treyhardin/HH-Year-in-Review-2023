@@ -16,7 +16,6 @@ export default function Projects() {
 
     let callback = (entries, observer) => {
         entries.forEach((entry) => {
-            console.log(entry.target.id)
             updateBackgroundImage(entry.target.id)
         });
     };
