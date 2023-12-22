@@ -24,7 +24,7 @@ export default function Events() {
       const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
 
       for (let i = 0; i < animatedRows.length; i++) {
-        sectionContainer.style.setProperty('--scroll-progress', `${scrollProgress * (animatedRows[i].scrollWidth)}px`)
+        sectionContainer.style.setProperty('--scroll-progress', `${scrollProgress * (animatedRows[i].scrollWidth - window.innerWidth)}px`)
         // animatedRows[i].style.translate = `${scrollProgress * animatedRows[i].scrollWidth}px 0%`
       }
 

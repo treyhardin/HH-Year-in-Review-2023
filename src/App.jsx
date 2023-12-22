@@ -39,9 +39,9 @@ function App() {
         <main>
             <Hero />
             <News />
+            <Quote />
             <Clients />
             <Awards />
-            <Quote />
             <Events />
             <Gallery />
             <Team />

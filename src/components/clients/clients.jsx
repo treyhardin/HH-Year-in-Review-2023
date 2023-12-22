@@ -9,14 +9,18 @@ export default function Clients() {
 
   let imageGrid;
 
-  lenis.on('scroll', () => {
-    // Can improve performance by moving bounding box calc outside of scroll event
+  const animateScroll = () => {
+
     if (imageGrid) {
       const boundingBox = imageGrid.getBoundingClientRect()
       const scrollProgress = Math.min(1, Math.min(0, boundingBox.top / boundingBox.height) * -1)
       imageGrid.style.setProperty('--scroll-progress', scrollProgress)
     }
-  })
+    requestAnimationFrame(animateScroll)
+  }
+
+  animateScroll()
+
 
   return (
     <Show when={data()}>

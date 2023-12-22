@@ -44,7 +44,7 @@ export default function Gallery() {
                         </div>
                         <div class={styles.eventInfo}>
                                 <h3>{data()[0].heading}</h3>
-                                <p>{data()[0].subheading}</p>
+                                <p class="h6">{data()[0].subheading}</p>
                             </div>
                         <div class={styles.imageScroller} ref={el => {
                             initObserver(el, sectionMain)
