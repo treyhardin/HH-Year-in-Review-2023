@@ -22,7 +22,6 @@
 }
 
 .project {
-  /* height: 100%; */
   flex: 30vw 0 0;
   display: flex;
   flex-direction: column;
@@ -35,10 +34,8 @@
   background-color: var(--color-ink);
   color: var(--color-reverse);
   border-radius: var(--radius-lg);
-  /* background-color: var(--color-reverse); */
   aspect-ratio: 3 / 4;
   width: 100%;
-  /* padding: var(--space-sm) var(--space-md); */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -48,7 +45,6 @@
 }
 
 .projectCardMedia {
-  /* background-color: var(--color-ink); */
   flex-grow: 1;
   justify-self: stretch;
   display: flex;
@@ -83,7 +79,6 @@
   left: 0;
   max-width: unset;
   max-height: unset;
-  /* offset: 0; */
   height: 100%;
   width: 100%;
   z-index: 0;
@@ -93,4 +88,16 @@
 
 .backgroundMedia:global(.hidden) {
   opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+
+  .projectList {
+    gap: 10vw;
+    padding: 0 20vw;
+  }
+  
+  .project {
+    flex: 60vw 0 0;
+  }
 }

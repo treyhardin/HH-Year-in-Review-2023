@@ -16,7 +16,7 @@ export default function Projects() {
 
     let callback = (entries, observer) => {
         entries.forEach((entry) => {
-            // console.log(entry.target.id)
+            console.log(entry.target.id)
             updateBackgroundImage(entry.target.id)
         });
     };
@@ -30,11 +30,6 @@ export default function Projects() {
     }
       
     let observer = new IntersectionObserver(callback, options);
-
-
-    createEffect(() => {
-        console.log(data())
-    })
 
     return (
         <Show when={data()}>
