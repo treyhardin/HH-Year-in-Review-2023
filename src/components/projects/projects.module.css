@@ -1,0 +1,64 @@
+.projects {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  /* overflow: hi; */
+}
+
+.projectList {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-sm);
+  align-items: center;
+  width: 100%;
+  min-height: 100lvh;
+  gap: 20vw;
+  padding: 0 35vw;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.project {
+  /* height: 100%; */
+  flex: 30vw 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: center;
+}
+
+.projectCard {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-reverse);
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.backgroundMedia {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: unset;
+  max-height: unset;
+  /* offset: 0; */
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  object-fit: cover;
+  transition: opacity .6s var(--anim-easing);
+}
+
+.backgroundMedia:global(.hidden) {
+  opacity: 0;
+}

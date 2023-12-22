@@ -13,6 +13,7 @@ import Awards from './components/awards/awards'
 import Events from './components/events/events'
 import { createSignal } from 'solid-js'
 import Preloader from './components/preloader/preloader'
+import Projects from './components/projects/projects'
 
 export const lenis =  new Lenis()
 export const [ loaded, setLoaded ] = createSignal(false)
@@ -41,6 +42,7 @@ function App() {
             <News />
             <Quote />
             <Clients />
+            <Projects />
             <Awards />
             <Events />
             <Gallery />
