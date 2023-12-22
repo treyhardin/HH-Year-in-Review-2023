@@ -1,6 +1,5 @@
 import styles from './hero.module.css'
-import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
-import { For, Show, createEffect, createResource, createSignal, onMount } from 'solid-js';
+import { Show, createResource } from 'solid-js';
 import { getHeroSettings, urlFor } from '../../utils/sanity-client';
 
 // import * as NODES from "three/examples/jsm/nodes/Nodes.js";
