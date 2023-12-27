@@ -1,6 +1,7 @@
 import { For, createResource } from 'solid-js'
 import styles from './awards.module.css'
 import { getAwardsSettings, urlFor } from '../../utils/sanity-client'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer';
 
 export default function Awards() {
 
@@ -10,7 +11,15 @@ export default function Awards() {
 
   return (
     <Show when={data()}>
-      <section class={styles.recognition} id="recognition">
+      <section 
+        data-show-navigation={true} 
+        data-navigation-index={2}
+        class={styles.recognition} 
+        id="recognition" 
+        ref={el => {
+          navigationVisibilityObserver.observe(el)
+        }}
+      >
         <h2 class={`${styles.sectionTitle} h3`}>{data()[0].heading}</h2>
         <For each={data()[0].awards}>{(award, i) =>
           <div class={styles.awardItem}>

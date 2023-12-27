@@ -2,19 +2,20 @@
 import Icon from '../icon/icon'
 import styles from './button.module.css'
 
-export default function Button({style, text, link}) {
-    switch (style) {
+export default function Button(props) {
+    switch (props.style) {
         case 'primary':
             return (
                 <button 
-                    link={link} 
+                    // link={props.link} 
                     class={
                         `${styles.buttonPrimary} caption`
                     }
                     onClick={() =>{
-                        window.open(link, '_blank').focus();
-                    }}>
-                    {text}
+                        window.open(props.link, '_blank').focus();
+                    }}
+                >
+                    {props.text}
                     <div class={styles.icon}>
                         <Icon glyph={"arrowDiagonal"} />
                     </div>
@@ -26,15 +27,26 @@ export default function Button({style, text, link}) {
             )
         case 'tertiary':
             return (
-                <button link={link} class={`${styles.buttonTertiary} caption`}>
-                    <p class={styles.buttonText}>{text}</p>
+                <button 
+                    link={props.link} 
+                    class={`${styles.buttonTertiary} caption`}
+                    onClick={() =>{
+                        window.open(props.link, '_blank').focus();
+                    }}
+                >
+                    <p class={styles.buttonText}>{props.text}</p>
                     <Icon glyph={"arrowDiagonal"} />
                 </button>
             )
         default:
             return (
                 <>
-                <button link={link} class={styles.buttonPrimary}>{text}</button>
+                <button 
+                    link={props.link} 
+                    class={styles.buttonPrimary}
+                >
+                        {props.text}
+                </button>
                 </>
             )
     }

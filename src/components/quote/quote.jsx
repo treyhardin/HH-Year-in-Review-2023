@@ -1,6 +1,7 @@
 import { For, Show, createResource } from 'solid-js'
 import styles from './quote.module.css'
 import { getQuoteSettings, urlFor } from '../../utils/sanity-client'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Quote() {
 
@@ -8,7 +9,9 @@ export default function Quote() {
 
     return (
         <Show when={data()}>
-            <section class={styles.quote}>
+            <section data-show-navigation={true} class={styles.quote} ref={el => {
+                navigationVisibilityObserver.observe(el)
+            }}>
                 <div class={styles.sectionTitle}>
                     <h3>{data()[0].heading}</h3>
                 </div>

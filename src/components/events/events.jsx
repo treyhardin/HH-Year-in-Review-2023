@@ -1,6 +1,7 @@
 import { Show, createEffect, createResource, onMount } from 'solid-js'
 import styles from './events.module.css'
 import { getEvents, urlFor } from '../../utils/sanity-client'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Events() {
 
@@ -46,7 +47,16 @@ export default function Events() {
 
   return (
     <Show when={data()}>
-      <section class={styles.events} ref={sectionContainer} id="events">
+      <section 
+        data-show-navigation={true} 
+        data-navigation-index={3}
+        id="events"
+        class={styles.events} 
+        ref={el => {
+          sectionContainer = el
+          navigationVisibilityObserver.observe(el)
+        }} 
+      >
 
         <div class={styles.eventsInner}>
 

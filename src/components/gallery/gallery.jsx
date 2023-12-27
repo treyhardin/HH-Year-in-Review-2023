@@ -1,6 +1,7 @@
 import { For, Show, createResource } from 'solid-js'
 import styles from './gallery.module.css'
 import { getGallerySettings, urlFor } from '../../utils/sanity-client'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer';
 
 export default function Gallery() {
 
@@ -32,7 +33,9 @@ export default function Gallery() {
 
     return (
         <Show when={data()}> 
-            <section class={styles.events}>
+            <section data-show-navigation={true} class={styles.events} ref={el => {
+                navigationVisibilityObserver.observe(el)
+            }}>
                     <div class={styles.event}>
                         <div class={styles.sectionMain} ref={sectionMain}>
                             <img 

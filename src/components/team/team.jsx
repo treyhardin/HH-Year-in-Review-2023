@@ -1,6 +1,7 @@
 import { createResource } from 'solid-js'
 import styles from './team.module.css'
 import { getTeamSettings, urlFor } from '../../utils/sanity-client'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Team() {
 
@@ -8,7 +9,15 @@ export default function Team() {
 
     return (
         <Show when={data()}>
-            <section class={styles.team} id="team">
+            <section 
+                data-show-navigation={true} 
+                data-navigation-index={4}
+                class={styles.team} 
+                id="team" 
+                ref={el => {
+                    navigationVisibilityObserver.observe(el)
+                }}
+            >
                 <div class={styles.sectionTitle}>
                     <p class="h1">{data()[0].value}</p>
                     <p class="h6">{data()[0].label}</p>

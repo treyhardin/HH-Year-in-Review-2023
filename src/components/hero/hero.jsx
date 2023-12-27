@@ -1,6 +1,7 @@
 import styles from './hero.module.css'
 import { Show, createResource } from 'solid-js';
 import { getHeroSettings, urlFor } from '../../utils/sanity-client';
+import { navigationVisibilityObserver } from '../../utils/intersection-observer';
 
 export default function Hero() {
 
@@ -14,9 +15,12 @@ export default function Hero() {
         parent.appendChild(clone)
     }
 
+
     return (
         <Show when={data()}>
-            <section class={styles.hero}>
+            <section data-show-navigation={false} class={styles.hero} ref={el => {
+                navigationVisibilityObserver.observe(el)
+            }}>
                 <div class={styles.content}>
                     <h1>{data()[0].title}</h1>
                     <div class={`${styles.ticker} caption`} >

@@ -2,6 +2,7 @@ import { For, Show, createEffect, createResource, createSignal } from 'solid-js'
 import styles from './projects.module.css'
 import { getProjects, urlFor } from '../../utils/sanity-client'
 import Button from '../button/button'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Projects() {
 
@@ -16,7 +17,9 @@ export default function Projects() {
 
     let callback = (entries, observer) => {
         entries.forEach((entry) => {
-            updateBackgroundImage(entry.target.id)
+            if (entry.isIntersecting) {
+                updateBackgroundImage(entry.target.id)
+            }
         });
     };
 
@@ -32,7 +35,9 @@ export default function Projects() {
 
     return (
         <Show when={data()}>
-            <section class={styles.projects} id="projects">
+            <section data-show-navigation={true} class={styles.projects} id="projects" ref={el => {
+                navigationVisibilityObserver.observe(el)
+            }}>
                 {/* <h2>Projects</h2> */}
                 <div class={styles.projectList}>
                     <For each={data()[0].projects}>{(project, i) =>

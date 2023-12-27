@@ -1,6 +1,7 @@
 import { For, createResource } from 'solid-js'
 import styles from './clients.module.css'
 import { getClientsSettings, urlFor } from '../../utils/sanity-client'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer';
 
 export default function Clients() {
 
@@ -23,7 +24,16 @@ export default function Clients() {
 
   return (
     <Show when={data()}>
-      <section class={styles.launches} ref={imageGrid} id="launches">
+      <section 
+        data-show-navigation={true} 
+        data-navigation-index={1}
+        class={styles.launches} 
+        id="launches"
+        ref={el => {
+          imageGrid = el
+          navigationVisibilityObserver.observe(el)
+        }} 
+      >
         <div class={styles.launchesInner}>
           <div class={styles.sectionTitle}>
             <p class="h1">{data()[0].value}</p>

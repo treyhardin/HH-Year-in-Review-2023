@@ -9,12 +9,20 @@
   gap: var(--space-md);
   color: var(--color-reverse);
   mix-blend-mode: difference;
+  translate: 0% 0;
+  opacity: 1;
+  transition: translate 0.8s var(--anim-easing), opacity 0.8s var(--anim-easing);
+}
+
+.navigation.hidden {
+  translate: -20px 0;
+  opacity: 0;
 }
 
 .progressBar {
-  /* height: 100%; */
   position: relative;
-  /* opacity: 0.5; */
+  margin: 8px 0;
+  color: var(--color-secondary);
 }
 
 .progressBar::after {
@@ -32,23 +40,26 @@
 
 .progressHandle {
   --icon-size: 10px;
+  --active-index: 1;
+  --scroll-progress: 50%;
   width: var(--icon-size);
   height: var(--icon-size);
   border-radius: 2px;
   background-color: currentColor;
+  /* background-color: var(--color-secondary); */
   rotate: 45deg;
   position: absolute;
-  margin: var(--space-sm) 0;
-  top: 0%;
+  top: var(--scroll-progress);
   left: 50%;
-  translate: -50% 0%;
+  translate: -50% -50%;
+  transition: top 0.8s var(--anim-easing);
 }
 
 .navigationLinks {
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  padding: var(--space-xs) 0;
+  /* padding: var(--space-xs) 0; */
 }
 
 .navigationLink {

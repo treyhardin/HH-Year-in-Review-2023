@@ -2,6 +2,7 @@ import { For, Show, createResource } from 'solid-js'
 import styles from './news.module.css'
 import { getNews, urlFor } from '../../utils/sanity-client'
 import Button from '../button/button'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function News() {
 
@@ -9,7 +10,15 @@ export default function News() {
 
     return (
         <Show when={data()}>
-            <section class={styles.news} id="news">
+            <section 
+                data-show-navigation={true} 
+                data-navigation-index={0}
+                class={styles.news} 
+                id="news" 
+                ref={el => {
+                    navigationVisibilityObserver.observe(el)
+                }}
+            >
                 {/* <p class="h6">{data()[0].heading}</p> */}
                 <div class={styles.newsPosts}>
                     <For each={data()[0].newsPosts} >{(newsPost, i) => 

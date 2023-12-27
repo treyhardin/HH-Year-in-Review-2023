@@ -2,6 +2,7 @@ import { For, Show, createResource } from 'solid-js'
 import Button from '../button/button'
 import styles from './footer.module.css'
 import { getFooterData } from '../../utils/sanity-client'
+import { navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Footer() {
 
@@ -9,7 +10,9 @@ export default function Footer() {
 
     return (
         <Show when={data()}>
-            <footer class={styles.footer}>
+            <footer data-show-navigation={false} class={styles.footer} ref={el => {
+                navigationVisibilityObserver.observe(el)
+            }}>
                 <div class={styles.content}>
                     <p class="h3">{data()[0].heading}</p>
                     <p class="h6">{data()[0].subheading}</p>
