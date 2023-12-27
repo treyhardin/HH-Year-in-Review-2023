@@ -1,7 +1,7 @@
 import { For, createResource } from 'solid-js'
 import styles from './awards.module.css'
 import { getAwardsSettings, urlFor } from '../../utils/sanity-client'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer';
+import { createAnimation, navigationVisibilityObserver } from '../../utils/intersection-observer';
 
 export default function Awards() {
 
@@ -22,7 +22,7 @@ export default function Awards() {
       >
         <h2 class={`${styles.sectionTitle} h3`}>{data()[0].heading}</h2>
         <For each={data()[0].awards}>{(award, i) =>
-          <div class={styles.awardItem}>
+          <div class={styles.awardItem} ref={el => createAnimation(el)}>
             <div class={styles.awardInfo}>
               <p class={`${styles.client} h6`}>{award.client}</p>
               <p class={`${styles.award} h4`}>{award.title}</p>

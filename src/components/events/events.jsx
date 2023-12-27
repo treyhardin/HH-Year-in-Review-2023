@@ -1,7 +1,7 @@
 import { Show, createEffect, createResource, onMount } from 'solid-js'
 import styles from './events.module.css'
 import { getEvents, urlFor } from '../../utils/sanity-client'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer'
+import { createAnimation, loadInObserver, navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Events() {
 
@@ -64,7 +64,7 @@ export default function Events() {
             <h2 class="h4">{data()[0].heading}</h2>
           </div>
 
-          <div class={styles.eventRows}>
+          <div class={styles.eventRows} ref={el => createAnimation(el)}>
 
           <div class={styles.eventsRow} ref={el => {
             initScrollListener(el)
@@ -79,6 +79,9 @@ export default function Events() {
                       width="300" 
                       height="400"
                       alt="Decorative image from a 2023 Half Helix event." 
+                      ref={el => {
+                        loadInObserver.observe(el)
+                      }}
                     />
                     <div class={styles.info}>
                       <h4 class="h6">{event.name}</h4>

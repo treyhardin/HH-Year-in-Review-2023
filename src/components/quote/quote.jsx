@@ -1,7 +1,7 @@
 import { For, Show, createResource } from 'solid-js'
 import styles from './quote.module.css'
 import { getQuoteSettings, urlFor } from '../../utils/sanity-client'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer'
+import { createAnimation, navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Quote() {
 
@@ -12,7 +12,7 @@ export default function Quote() {
             <section data-show-navigation={true} class={styles.quote} ref={el => {
                 navigationVisibilityObserver.observe(el)
             }}>
-                <div class={styles.sectionTitle}>
+                <div class={styles.sectionTitle} ref={el => createAnimation(el)}>
                     <h3>{data()[0].heading}</h3>
                 </div>
                 <div class={styles.imageGrid}>
@@ -23,6 +23,9 @@ export default function Quote() {
                             width="30vw"
                             height="30vh" 
                             alt="Decorative images showing Half Helix events & culture."
+                            ref={el => {
+                                createAnimation(el)
+                            }}
                         />
                     }</For>
                 </div>

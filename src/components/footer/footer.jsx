@@ -2,7 +2,7 @@ import { For, Show, createResource } from 'solid-js'
 import Button from '../button/button'
 import styles from './footer.module.css'
 import { getFooterData } from '../../utils/sanity-client'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer'
+import { createAnimation, navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Footer() {
 
@@ -13,7 +13,7 @@ export default function Footer() {
             <footer data-show-navigation={false} class={styles.footer} ref={el => {
                 navigationVisibilityObserver.observe(el)
             }}>
-                <div class={styles.content}>
+                <div class={styles.content} ref={el => createAnimation(el)}>
                     <p class="h3">{data()[0].heading}</p>
                     <p class="h6">{data()[0].subheading}</p>
                     <Button style="primary" text="Learn More about Half Helix" link={data()[0].buttonURL} />

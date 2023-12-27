@@ -2,7 +2,7 @@ import { For, Show, createResource } from 'solid-js'
 import styles from './news.module.css'
 import { getNews, urlFor } from '../../utils/sanity-client'
 import Button from '../button/button'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer'
+import { createAnimation, loadInObserver, navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function News() {
 
@@ -22,7 +22,12 @@ export default function News() {
                 {/* <p class="h6">{data()[0].heading}</p> */}
                 <div class={styles.newsPosts}>
                     <For each={data()[0].newsPosts} >{(newsPost, i) => 
-                        <div class={styles.newsPost}>
+                        <div 
+                            class={styles.newsPost}
+                            ref={el => {
+                                createAnimation(el)
+                            }}
+                        >
                             <img 
                                 class={styles.image} 
                                 src={urlFor(newsPost.image).width(800).height(600)} 

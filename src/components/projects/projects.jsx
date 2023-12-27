@@ -2,7 +2,7 @@ import { For, Show, createEffect, createResource, createSignal } from 'solid-js'
 import styles from './projects.module.css'
 import { getProjects, urlFor } from '../../utils/sanity-client'
 import Button from '../button/button'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer'
+import { createAnimation, navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Projects() {
 
@@ -39,14 +39,14 @@ export default function Projects() {
                 navigationVisibilityObserver.observe(el)
             }}>
                 {/* <h2>Projects</h2> */}
-                <div class={styles.projectList}>
+                <div class={styles.projectList} ref={el => createAnimation(el)}>
                     <For each={data()[0].projects}>{(project, i) =>
                         <>
                         <div class={styles.project}  key={i()}>
                             <div class={styles.projectCard} id={i()} ref={el => {
                                 observer.observe(el);
                             }}>
-                                <div class={styles.projectCardMedia}>
+                                <div class={styles.projectCardMedia} >
                                     <Switch>
                                         <Match when={project.videoURL}>
                                             <video 
@@ -64,7 +64,7 @@ export default function Projects() {
                                         <Match when={!project.videoURL && project.mainImage}>
                                             <img 
                                                 class={styles.cardImage}
-                                                src={urlFor(project.mainImage).width(600)} 
+                                                src={urlFor(project.mainImage).width(600).saturation(-100)} 
                                             />
                                         </Match>
                                     </Switch>

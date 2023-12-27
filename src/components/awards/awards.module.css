@@ -18,11 +18,17 @@
   position: relative;
   z-index: 1;
   transition: background-color var(--anim-easing) .3s;
+  opacity: 1;
+  transition: opacity var(--anim-lg);
 }
 
 .awardItem:hover {
   background-color: var(--color-primary);
   color: var(--color-reverse);
+}
+
+.awardItem[data-animate-hidden="true"] {
+  opacity: 0;
 }
 
 .awardInfo {
@@ -86,7 +92,7 @@
     align-items: stretch;
     gap: var(--space-xs);
   }
-  
+
   .imageWrapper {
     display: none;
   }

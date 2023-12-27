@@ -1,7 +1,7 @@
 import { createResource } from 'solid-js'
 import styles from './team.module.css'
 import { getTeamSettings, urlFor } from '../../utils/sanity-client'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer'
+import { createAnimation, navigationVisibilityObserver } from '../../utils/intersection-observer'
 
 export default function Team() {
 
@@ -25,7 +25,7 @@ export default function Team() {
                 <div class={styles.teamMembers}>
                     <For each={data()[0].teamMembers}>{(teamMember, i) =>
                         <Show when={teamMember.image}>
-                            <div class={styles.teamMember} key={i()}>
+                            <div class={styles.teamMember} key={i()} ref={el => createAnimation(el)}>
                                 <img 
                                     class={styles.image} 
                                     src={urlFor(teamMember.image).width(500).height(500)} 

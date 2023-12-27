@@ -19,6 +19,12 @@
   padding: 0 35vw;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  transition: opacity var(--anim-lg), translate var(--anim-lg);
+}
+
+.projectList[data-animate-hidden="true"] {
+  opacity: 0;
+  translate: 0 60px;
 }
 
 .project {
@@ -86,6 +92,7 @@
   z-index: 0;
   object-fit: cover;
   transition: opacity 2s var(--anim-easing);
+  filter: grayscale(1);
 }
 
 .backgroundMedia:global(.hidden) {

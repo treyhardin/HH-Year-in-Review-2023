@@ -71,6 +71,7 @@
   overflow: visible;
   z-index: 1;
   align-self: center;
+  perspective: 2000px;
 }
 
 
@@ -80,6 +81,15 @@
   flex-shrink: 0;
   border-radius: var(--radius-lg);
   cursor: pointer;
+  opacity: 1;
+  transform: rotateX(0deg);
+  transform-origin: top center;
+  transition: opacity var(--anim-lg), transform var(--anim-lg);
+}
+
+.image[data-animate-hidden="true"] {
+  opacity: 0;
+  transform: rotateX(20deg);
 }
 
 @media screen and (max-width: 768px) {

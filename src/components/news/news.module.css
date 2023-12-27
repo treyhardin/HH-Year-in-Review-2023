@@ -25,17 +25,31 @@
   gap: var(--space-xs);
   flex: 50% 0 1;
   min-width: 0;
+  opacity: 1;
+  translate: 0 0px;
+  transition: opacity var(--anim-lg), translate var(--anim-lg);
+}
+
+.newsPost[data-animate-hidden="true"] {
+  opacity: 0;
+  translate: 0 40px;
+}
+
+.newsPost:nth-child(2n) {
+  transition-delay: 0.3s;
 }
 
 .image {
-  /* flex: 40% 0 0; */
   flex-shrink: 1;
   min-width: 0;
   border-radius: var(--radius-lg);
   aspect-ratio: 8 / 6;
   width: 100%;
   height: auto;
+  transition: opacity 0.6s var(--anim-easing), filter 0.6s var(--anim-easing);
 }
+
+
 
 .content {
   display: flex;

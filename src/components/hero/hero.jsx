@@ -1,13 +1,15 @@
 import styles from './hero.module.css'
 import { Show, createResource } from 'solid-js';
 import { getHeroSettings, urlFor } from '../../utils/sanity-client';
-import { navigationVisibilityObserver } from '../../utils/intersection-observer';
+import { createAnimation, navigationVisibilityObserver } from '../../utils/intersection-observer';
+import { lenis } from '../../App';
 
 export default function Hero() {
 
     const [ data ] = createResource(getHeroSettings);
 
-    let tickerTextClones = 12;
+    let heroVideo
+    let tickerTextClones = 12
 
     const cloneTickerText = (e, parent, content) => {
         const clone = e.cloneNode(true)
@@ -15,13 +17,25 @@ export default function Hero() {
         parent.appendChild(clone)
     }
 
+    lenis.on('scroll', () => {
+        if (heroVideo) {
+            heroVideo.style.translate = `0 ${lenis.animatedScroll / 5}px`
+        }
+        console.log(lenis.animatedScroll)
+    })
+
 
     return (
         <Show when={data()}>
             <section data-show-navigation={false} class={styles.hero} ref={el => {
                 navigationVisibilityObserver.observe(el)
             }}>
-                <div class={styles.content}>
+                <div 
+                    class={styles.content}
+                    ref={el => {
+                        createAnimation(el)
+                    }}
+                >
                     <h1>{data()[0].title}</h1>
                     <div class={`${styles.ticker} caption`} >
                         <p ref={el => {
@@ -31,7 +45,7 @@ export default function Hero() {
                         }}>{data()[0].tickerText}</p>
                     </div>
                 </div>
-                <div class={styles.heroMedia} >
+                <div class={styles.heroMedia} ref={heroVideo}>
                     <video 
                         class={styles.heroAsset} 
                         autoplay 

@@ -29,3 +29,30 @@ const toggleNavigationVisibility = (entries, observer) => {
 }
 
 export const navigationVisibilityObserver = new IntersectionObserver(toggleNavigationVisibility, navigationObserverOptions);
+
+
+const loadInObserverOptions = {
+  // root: document.querySelector("#scrollArea"),
+  rootMargin: "0%",
+  threshold: 0.4,
+};
+
+const animateLoadIn = (entries, observer) => {
+
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // console.log(entry)
+        entry.target.dataset.animateHidden = false
+      } else {
+        // entry.target.dataset.animateHidden = true
+      }
+
+    });
+}
+
+export const loadInObserver = new IntersectionObserver(animateLoadIn, loadInObserverOptions)
+
+export const createAnimation = (element) => {
+  element.dataset.animateHidden = true
+  loadInObserver.observe(element)
+}

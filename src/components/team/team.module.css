@@ -28,30 +28,42 @@
   align-items: center;
   gap: var(--space-sm);
   height: 60lvh;
+  transition: opacity var(--anim-lg), translate var(--anim-lg);
+}
+
+.teamMember[data-animate-hidden="true"] {
+  opacity: 0;
+  translate: 0 40px;
 }
 
 .teamMember:nth-child(6n + 1) {
   justify-content: center;
+  transition-delay: 0.2s;
 }
 
 .teamMember:nth-child(6n + 2) {
   justify-content: flex-end;
+  transition-delay: 0s;
 }
 
 .teamMember:nth-child(6n + 3) {
   justify-content: flex-start;
+  transition-delay: 0.4s;
 }
 
 .teamMember:nth-child(6n + 4) {
   justify-content: flex-start;
+  transition-delay: 0.2s;
 }
 
 .teamMember:nth-child(6n + 5) {
   justify-content: flex-end;
+  transition-delay: 0.4s;
 }
 
 .teamMember:nth-child(6n + 6) {
   justify-content: center;
+  transition-delay: 0s;
 }
 
 .image {

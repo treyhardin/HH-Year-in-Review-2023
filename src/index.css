@@ -56,7 +56,9 @@
   --page-margin-narrow: 140px;
 
   --anim-easing: cubic-bezier(0.16, 1, 0.3, 1);
-  --anim-short: 0.2s var(--anim-easing);
+  --anim-sm: 0.2s var(--anim-easing);
+  --anim-md: 0.8s var(--anim-easing);
+  --anim-lg: 1.2s var(--anim-easing);
 
   --icon-sm: 10px;
   --icon-md: 14px;

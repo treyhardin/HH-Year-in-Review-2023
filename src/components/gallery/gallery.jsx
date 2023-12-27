@@ -1,7 +1,7 @@
 import { For, Show, createResource } from 'solid-js'
 import styles from './gallery.module.css'
 import { getGallerySettings, urlFor } from '../../utils/sanity-client'
-import { navigationVisibilityObserver } from '../../utils/intersection-observer';
+import { createAnimation, navigationVisibilityObserver } from '../../utils/intersection-observer';
 
 export default function Gallery() {
 
@@ -60,6 +60,9 @@ export default function Gallery() {
                                         src={urlFor(image).height(1200)} 
                                         width="60vw"
                                         alt="Photo taken at a Half Helix social event."
+                                        ref={el => {
+                                            createAnimation(el)
+                                        }}
                                     />
                                 </Show>
                             }</For>
