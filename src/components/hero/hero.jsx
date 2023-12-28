@@ -21,7 +21,7 @@ export default function Hero() {
         if (heroVideo) {
             heroVideo.style.translate = `0 ${lenis.animatedScroll / 5}px`
         }
-        console.log(lenis.animatedScroll)
+        // console.log(lenis.animatedScroll)
     })
 
 

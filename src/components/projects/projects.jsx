@@ -64,7 +64,7 @@ export default function Projects() {
                                         <Match when={!project.videoURL && project.mainImage}>
                                             <img 
                                                 class={styles.cardImage}
-                                                src={urlFor(project.mainImage).width(600).saturation(-100)} 
+                                                src={urlFor(project.mainImage).width(600)} 
                                             />
                                         </Match>
                                     </Switch>
@@ -89,7 +89,7 @@ export default function Projects() {
                 <For each={data()[0].projects}>{(project, i) =>
                     <img 
                         class={styles.backgroundMedia}
-                        src={urlFor(project.backgroundImage).width(1880)} 
+                        src={urlFor(project.backgroundImage).width(1880).saturation(-100)} 
                         ref={backgroundImage[i()]}
                         id={`backgroundImage${i()}`}
                         width="100vw"
