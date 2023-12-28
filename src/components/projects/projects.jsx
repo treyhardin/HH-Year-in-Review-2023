@@ -11,7 +11,7 @@ export default function Projects() {
     let backgroundImage = []
 
     let options = {
-        rootMargin: "-25%",
+        rootMargin: "-20%",
         threshold: 0.7,
     };
 
