@@ -18,7 +18,8 @@
 
 .teamMembers {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
 }
 
 .teamMember {
@@ -36,33 +37,43 @@
   translate: 0 40px;
 }
 
-.teamMember:nth-child(6n + 1) {
+.teamMember:nth-child(8n + 1) {
   justify-content: center;
-  transition-delay: 0.2s;
+  /* transition-delay: 0.2s; */
 }
 
-.teamMember:nth-child(6n + 2) {
+.teamMember:nth-child(8n + 2) {
   justify-content: flex-end;
+  /* transition-delay: 0s; */
+}
+
+.teamMember:nth-child(8n + 3) {
+  justify-content: flex-start;
+  /* transition-delay: 0.4s; */
+}
+
+.teamMember:nth-child(8n + 4) {
+  justify-content: center;
+  /* transition-delay: 0.2s; */
+}
+
+.teamMember:nth-child(8n + 5) {
+  justify-content: flex-end;
+  /* transition-delay: 0.4s; */
+}
+
+.teamMember:nth-child(8n + 6) {
+  justify-content: center;
   transition-delay: 0s;
 }
 
-.teamMember:nth-child(6n + 3) {
+.teamMember:nth-child(8n + 7) {
   justify-content: flex-start;
-  transition-delay: 0.4s;
+  transition-delay: 0s;
 }
 
-.teamMember:nth-child(6n + 4) {
-  justify-content: flex-start;
-  transition-delay: 0.2s;
-}
-
-.teamMember:nth-child(6n + 5) {
+.teamMember:nth-child(8n + 8) {
   justify-content: flex-end;
-  transition-delay: 0.4s;
-}
-
-.teamMember:nth-child(6n + 6) {
-  justify-content: center;
   transition-delay: 0s;
 }
 
@@ -86,7 +97,43 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .teamMember:nth-child(6n + 1) {
+  .teamMember {
+    height: 40lvh;
+  }
+
+  .teamMember:nth-child(8n + 1) {
+    justify-content: flex-start;
+  }
+  
+  .teamMember:nth-child(8n + 2) {
+    justify-content: flex-end;
+  }
+  
+  .teamMember:nth-child(8n + 3) {
+    justify-content: center;
+  }
+  
+  .teamMember:nth-child(8n + 4) {
+    justify-content: flex-end;
+  }
+  
+  .teamMember:nth-child(8n + 5) {
+    justify-content: flex-start;
+  }
+  
+  .teamMember:nth-child(8n + 6) {
+    justify-content: flex-end;
+  }
+  
+  .teamMember:nth-child(8n + 7) {
+    justify-content: center;
+  }
+  
+  .teamMember:nth-child(8n + 8) {
+    justify-content: flex-start;
+  }
+
+  /* .teamMember:nth-child(6n + 1) {
     justify-content: center;
   }
   
@@ -108,5 +155,5 @@
   
   .teamMember:nth-child(6n + 6) {
     justify-content: center;
-  }
+  } */
 }
