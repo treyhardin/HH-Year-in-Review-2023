@@ -39,23 +39,30 @@
 }
 
 .logoImage {
-  --min-scale: 500px;
+  --min-scale: 800px;
   --max-scale: 6000px;
   --max-blur: 20px;
   --max-translate: 10vh;
+  --offset: 1;
+  --scroll-progress-full: var(--scroll-progress) / var(--offset);
+  --scroll-progress-doubled: calc(var(--scroll-progress-full) * 2 - 1);
+  --scroll-progress-mid: calc(1 - max( var(--scroll-progress-doubled), -1 * var(--scroll-progress-doubled)));
+  --depth: calc( (var(--min-scale) - var(--max-scale)) * ( var(--scroll-progress-full) ) + var(--min-scale));
   width: 100%;
   height: auto;
-
-  --duration: calc(var(--seed) * 0.5 + 0.5);
-  --scroll-progress-full: calc(var(--scroll-progress) / var(--duration));
-  --scroll-progress-mid: calc( min( min(var(--duration), var(--scroll-progress-full) * 2), var(--duration) - var(--scroll-progress-full)));
-  --depth: calc( (var(--min-scale) - var(--max-scale)) * var(--scroll-progress-full) + var(--min-scale));
-
   will-change: translate, filter, scale, opacity;
   translate: 0 0 var(--depth);
-  filter: blur( calc( (var(--duration) - var(--scroll-progress-mid) * 2) * var(--max-blur)));
+  filter: blur( calc( (1 - var(--scroll-progress-mid)) * var(--max-blur) )  );
   opacity: var(--scroll-progress-mid);
 }
+
+.logoImage:nth-child(2n) {
+  --offset: 0.5;
+ }
+
+.logoImage:nth-child(3n) {
+  --offset: 1.5;
+ }
 
 @media screen and (max-width: 768px) {
   .imageGrid {

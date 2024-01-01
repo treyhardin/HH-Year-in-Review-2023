@@ -25,6 +25,40 @@
     translate: 0 60px;
     opacity: 0;
 }
+
+.textStroke,
+.textFill {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    translate: 0 -50%;
+}
+
+.textStroke {
+    
+}
+
+.textStroke span {
+    /* --scroll-progress: 30%; */
+    /* overflow: hidden; */
+    /* color: transparent */
+    color: var(--color-primary);
+    -webkit-text-fill-color: transparent; 
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--color-primary);
+    background-image: linear-gradient(90deg, var(--color-primary), var(--color-primary));
+    /* background-color: red; */
+    background-clip: text;
+    background-repeat: no-repeat;
+    background-size: var(--scroll-progress) 100%;
+    /* background-size: var(--scroll-progress) 100%; */
+}
+
+.textFill {
+    --scroll-percent: 20%;
+    color: var(--color-primary);
+    clip-path: polygon(0 0, var(--scroll-percent) 0, var(--scroll-percent) 110%, 0 110%);
+}
    
 .imageGrid {
     min-height: 300lvh;

@@ -2,25 +2,21 @@ import { For, createResource } from 'solid-js'
 import styles from './clients.module.css'
 import { getClientsSettings, urlFor } from '../../utils/sanity-client'
 import { navigationVisibilityObserver } from '../../utils/intersection-observer';
+import { getViewportVisibility } from '../../utils/helpers';
+import { lenis } from '../../App';
 
 export default function Clients() {
 
   const [ data ] = createResource(getClientsSettings)
 
-  let imageGrid;
+  const animateScroll = (element) => {
 
-  const animateScroll = () => {
+    lenis.on('scroll', () => {
+      var scrollProgress = getViewportVisibility(element, { mode: 'cover'})
+      element.style.setProperty('--scroll-progress', scrollProgress)
+    })
 
-    if (imageGrid) {
-      const boundingBox = imageGrid.getBoundingClientRect()
-      const scrollProgress = Math.min(1, Math.min(0, boundingBox.top / boundingBox.height) * -1)
-      imageGrid.style.setProperty('--scroll-progress', scrollProgress)
-    }
-    requestAnimationFrame(animateScroll)
   }
-
-  animateScroll()
-
 
   return (
     <Show when={data()}>
@@ -30,8 +26,8 @@ export default function Clients() {
         class={styles.launches} 
         id="launches"
         ref={el => {
-          imageGrid = el
           navigationVisibilityObserver.observe(el)
+          animateScroll(el)
         }} 
       >
         <div class={styles.launchesInner}>

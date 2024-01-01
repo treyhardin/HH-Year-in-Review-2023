@@ -2,29 +2,28 @@ import { Show, createEffect, createResource, onMount } from 'solid-js'
 import styles from './events.module.css'
 import { getEvents, urlFor } from '../../utils/sanity-client'
 import { createAnimation, loadInObserver, navigationVisibilityObserver } from '../../utils/intersection-observer'
+import { getViewportVisibility } from '../../utils/helpers'
 
 export default function Events() {
 
   const [ data ] = createResource(getEvents)
 
-  let sectionContainer, scrollBounds, animationFrameId
+  let sectionContainer, animationFrameId
 
   let animatedRows = []
 
-  const animateRows = () => {
+  const animateRows = (el) => {
 
     if (sectionContainer) {
 
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
- 
-      const scrollParentBounds = sectionContainer.getBoundingClientRect()
-      const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.top / scrollParentBounds.height) * -1)
 
+      var scrollProgress = getViewportVisibility(sectionContainer, {mode: 'cover'})
+ 
       for (let i = 0; i < animatedRows.length; i++) {
         sectionContainer.style.setProperty('--scroll-progress', `${scrollProgress * (animatedRows[i].scrollWidth - window.innerWidth)}px`)
-        // animatedRows[i].style.translate = `${scrollProgress * animatedRows[i].scrollWidth}px 0%`
       }
 
       animationFrameId = requestAnimationFrame(animateRows)
@@ -32,18 +31,10 @@ export default function Events() {
     } 
   }
 
-  const setScroll = (target, parent) => {
-    const scrollParentBounds = parent.getBoundingClientRect()
-    const scrollProgress = Math.min(1, Math.min(0, scrollParentBounds.bottom / scrollParentBounds.height) * -1)
-    parent.style.setProperty('--scroll-progress', `${scrollProgress * (target.scrollWidth)}px`)
-    requestAnimationFrame(setScroll(target, parent))
-  }
-
   const initScrollListener = (target) => {
     animatedRows.push(target)
-    animateRows()
+    animateRows(target)
   }
-
 
   return (
     <Show when={data()}>
