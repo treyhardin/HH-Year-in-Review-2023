@@ -2,6 +2,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-reverse);
   gap: var(--space-lg);
   padding: var(--header-height) var(--page-margin) var(--space-xl) var(--page-margin-narrow);
 }

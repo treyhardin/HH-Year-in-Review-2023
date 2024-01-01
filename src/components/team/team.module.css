@@ -1,6 +1,9 @@
 .team {
   min-height: 100lvh;
   padding: var(--space-xl) var(--page-margin);
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-reverse);
 }
 
 .sectionTitle {

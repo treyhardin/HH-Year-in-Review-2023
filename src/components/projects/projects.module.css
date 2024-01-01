@@ -3,6 +3,8 @@
   padding: 0;
   overflow: hidden;
   background-color: var(--color-ink);
+  z-index: 1;
+  background-color: var(--color-reverse);
   /* overflow: hi; */
 }
 

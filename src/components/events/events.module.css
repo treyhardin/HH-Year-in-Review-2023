@@ -1,6 +1,9 @@
 .events {
   --scroll-progress: 0px;
   min-height: 300lvh;
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-reverse);
   /* background-color: var(--color-primary); */
   /* padding: var(--header-height) var(--page-margin) var(--space-xl) var(--page-margin-narrow); */
 }
@@ -14,7 +17,7 @@
   min-height: 100lvh;
   justify-content: center;
   overflow: hidden;
-  margin: var(--space-xl) 0;
+  padding: var(--space-xl) 0;
 }
 
 .eventRows {

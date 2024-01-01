@@ -1,5 +1,7 @@
 .recognition {
   position: relative;
+  z-index: 1;
+  background-color: var(--color-reverse);
   display: flex;
   flex-direction: column;
   width: 100%;
