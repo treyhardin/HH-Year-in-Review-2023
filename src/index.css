@@ -269,7 +269,7 @@ p {
     --page-margin: var(--space-md);
     --page-margin-narrow: var(--page-margin);
 
-    --icon-sm: 10px;
+    --icon-sm: 6px;
     --icon-md: 14px;
     --icon-lg: 18px;
 
