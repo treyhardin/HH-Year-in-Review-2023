@@ -41,11 +41,8 @@ const animateLoadIn = (entries, observer) => {
 
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // console.log(entry)
-        entry.target.dataset.animateHidden = false
-      } else {
-        // entry.target.dataset.animateHidden = true
-      }
+        return entry.target.dataset.animateHidden = false
+      } 
 
     });
 }

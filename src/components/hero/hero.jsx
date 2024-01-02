@@ -11,6 +11,11 @@ export default function Hero() {
     let heroVideo
     let tickerTextClones = 12
 
+    const defaultText = {
+        heading: 'Year in Review 2023',
+        tickerText: 'A look back at a monumental year for Half Helix.'
+    }
+
     const cloneTickerText = (e, parent, content) => {
         const clone = e.cloneNode(true)
         clone.innerHTML = content
@@ -26,7 +31,7 @@ export default function Hero() {
 
 
     return (
-        <Show when={data()}>
+        // <Show when={data()}>
             <section data-show-navigation={false} class={styles.hero} ref={el => {
                 navigationVisibilityObserver.observe(el)
             }}>
@@ -36,13 +41,13 @@ export default function Hero() {
                         createAnimation(el)
                     }}
                 >
-                    <h1>{data()[0].title}</h1>
+                    <h1>{data() ? data()[0].title : defaultText.heading }</h1>
                     <div class={`${styles.ticker} caption`} >
                         <p ref={el => {
                             for (let i = 0; i < tickerTextClones; i++) {
-                                cloneTickerText(el, el.parentNode, data()[0].tickerText)
+                                cloneTickerText(el, el.parentNode, data() ? data()[0].tickerText : defaultText.tickerText)
                             }
-                        }}>{data()[0].tickerText}</p>
+                        }}>{data() ? data()[0].tickerText : defaultText.tickerText}</p>
                     </div>
                 </div>
                 <div class={styles.heroMedia} ref={heroVideo}>
@@ -53,7 +58,8 @@ export default function Hero() {
                         muted  
                         defaultmuted 
                         playsinline 
-                        src={ data()[0].heroVideoURL } 
+                        src={ data() ? data()[0].heroVideoURL : null }
+                        poster={ data() ? urlFor(data()[0].heroVideoFallback).width(720) : null } 
                         onloadedmetadata="this.muted = true" 
                         loading="eager"
                         width="45vw"
@@ -67,8 +73,8 @@ export default function Hero() {
                     muted 
                     autoplay 
                     playsinline 
-                    src={ data()[0].backgroundVideoURL } 
-                    poster={urlFor(data()[0].backgroundFallback).width(1440)} 
+                    src={ data() ? data()[0].backgroundVideoURL : null } 
+                    poster={data() ? urlFor(data()[0].backgroundFallback).width(1440) : null} 
                     onloadedmetadata="this.muted = true" 
                     loading="eager"
                     width="100vw"
@@ -76,7 +82,7 @@ export default function Hero() {
                     aria-hidden="true"
                 />
             </section>
-        </Show>
+        // </Show>
     )
 
 }

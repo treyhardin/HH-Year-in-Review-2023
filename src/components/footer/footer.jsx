@@ -30,6 +30,8 @@ export default function Footer() {
                     muted  
                     defaultmuted 
                     playsinline 
+                    width="100vw"
+                    height="100lvh"
                     src={ data()[0].backgroundVideoURL } 
                     poster={ data()[0].fallbackImage } 
                     onloadedmetadata="this.muted = true" 

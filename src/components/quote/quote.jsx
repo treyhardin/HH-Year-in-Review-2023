@@ -9,12 +9,20 @@ export default function Quote() {
 
     const [ data ] = createResource(getQuoteSettings)
 
-    const setupScrollAnimation = (el) => {
+    const initScrollAnimation = (el) => {
 
-        lenis.on('scroll', () => {
+        // lenis.on('scroll', () => {
+        //     var animationProgress = getViewportVisibility(el, {mode: 'contain'}) * 100
+        //     el.style.setProperty('--scroll-progress', `${animationProgress}%`)
+        // })
+
+        const setScrollPosition = () => {
             var animationProgress = getViewportVisibility(el, {mode: 'contain'}) * 100
             el.style.setProperty('--scroll-progress', `${animationProgress}%`)
-        })
+            requestAnimationFrame(setScrollPosition)
+        }
+
+        setScrollPosition()
     }
 
     
@@ -23,15 +31,11 @@ export default function Quote() {
         <Show when={data()}>
             <section data-show-navigation={true} class={styles.quote} ref={el => {
                 navigationVisibilityObserver.observe(el)
-                setupScrollAnimation(el)
+                initScrollAnimation(el)
             }}>
                 <div class={styles.sectionTitle} ref={el => createAnimation(el)}>
-                    <h3 class={styles.textStroke} ref={el => {
-                        // console.log(data()[0].heading)
-                    }}>
-                        <span ref={el => {
-                            // setupScrollAnimation(el)
-                        }}>{data()[0].heading}</span>
+                    <h3 class={styles.textStroke}>
+                        <span>{data()[0].heading}</span>
                     </h3>
                 </div>
                 <div class={styles.imageGrid}>

@@ -9,12 +9,22 @@ export default function Clients() {
 
   const [ data ] = createResource(getClientsSettings)
 
-  const animateScroll = (element) => {
+  const initScrollAnimation = (element) => {
 
-    lenis.on('scroll', () => {
+    // lenis.on('scroll', () => {
+    //   var scrollProgress = getViewportVisibility(element, { mode: 'cover'})
+    //   element.style.setProperty('--scroll-progress', scrollProgress)
+    // })
+
+    const animateScroll = () => {
       var scrollProgress = getViewportVisibility(element, { mode: 'cover'})
       element.style.setProperty('--scroll-progress', scrollProgress)
-    })
+      requestAnimationFrame(animateScroll)
+    }
+
+    animateScroll()
+
+
 
   }
 
@@ -27,7 +37,7 @@ export default function Clients() {
         id="launches"
         ref={el => {
           navigationVisibilityObserver.observe(el)
-          animateScroll(el)
+          initScrollAnimation(el)
         }} 
       >
         <div class={styles.launchesInner}>
