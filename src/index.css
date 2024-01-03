@@ -129,7 +129,7 @@ ul,
 h1,
 .h1 {
   font-family: var(--font-primary);
-  --font-size-desktop: 160;
+  --font-size-desktop: 150;
   --font-size-mobile: 60;
   letter-spacing: -0.05em;
   line-height: 0.85;
