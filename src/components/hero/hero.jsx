@@ -50,6 +50,7 @@ export default function Hero() {
                         }}>{data() ? data()[0].tickerText : defaultText.tickerText}</p>
                     </div>
                 </div>
+                <Show when={data()}>
                 <div class={styles.heroMedia} ref={heroVideo}>
                     <video 
                         class={styles.heroAsset} 
@@ -58,8 +59,8 @@ export default function Hero() {
                         muted  
                         defaultmuted 
                         playsinline 
-                        src={ data() ? data()[0].heroVideoURL : null }
-                        poster={ data() ? urlFor(data()[0].heroVideoFallback).width(720) : null } 
+                        src={ data()[0] ? data()[0].heroVideoURL : null }
+                        poster={ data()[0] ? urlFor(data()[0].heroVideoFallback).width(720) : null } 
                         onloadedmetadata="this.muted = true" 
                         loading="eager"
                         width="45vw"
@@ -67,20 +68,23 @@ export default function Hero() {
                         alt="Demo reel video of recent Half Helix design & development work."
                     />
                 </div>
+                </Show>
+                <Show when={data()}>
                 <video 
                     class={styles.backgroundMedia} 
                     loop 
                     muted 
                     autoplay 
                     playsinline 
-                    src={ data() ? data()[0].backgroundVideoURL : null } 
-                    poster={data() ? urlFor(data()[0].backgroundFallback).width(1440) : null} 
+                    src={ data()[0] ? data()[0].backgroundVideoURL : null } 
+                    poster={data()[0] ? urlFor(data()[0].backgroundFallback).width(1440) : null} 
                     onloadedmetadata="this.muted = true" 
                     loading="eager"
                     width="100vw"
                     height="100vh"
                     aria-hidden="true"
                 />
+                </Show>
             </section>
         // </Show>
     )
